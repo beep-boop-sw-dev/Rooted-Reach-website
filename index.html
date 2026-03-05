@@ -1,1480 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rooted Reach | Boutique Marketing for Mental Health Professionals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Athenna Agency | Ethical Content Marketing for Therapists & Health Professionals</title>
+  <meta name="description" content="Athenna Agency provides ethical, education-led content marketing for licensed therapists, counselors, psychologists, and health professionals. Grow your practice with content that's clinically sound, ethically aligned, and genuinely you."/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      /* Dark palette — inspired by Koppla screenshot */
-      --ink:         #0B1712;
-      --ink-mid:     #122018;
-      --ink-lite:    #1C3328;
-      --ink-hover:   #223D30;
-
-      /* Light / accent palette — pulled from logo */
-      --cream:       #F5F0E8;
-      --sand:        #EAE0CE;
-      --tan:         #CCBDA8;
-      --taupe:       #9E8B74;
-      --terracotta:  #C0694A;
-      --terra-lite:  #D4866A;
-      --sage:        #6D9478;
-      --sage-lite:   #8AB599;
-      --gold:        #C09550;
-      --white:       #FFFFFF;
-
-      /* Text */
-      --on-dark-1:   #F0EBE0;
-      --on-dark-2:   rgba(240,235,224,0.65);
-      --on-dark-3:   rgba(240,235,224,0.38);
-      --text:        #111A14;
-      --sub:         #4E5E52;
-
-      --card-shadow: 0 2px 24px rgba(11,23,18,0.18);
-      --radius:      14px;
-    }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-    h1,h2,h3,h4,h5 { font-family: 'Playfair Display', serif; line-height: 1.2; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ─── Pages ─── */
-    .page { display: none; }
-    .page.active { display: block; }
-
-    /* ─── SVG Logo ─── */
-    .logo-mark svg { display: block; }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      height: 72px;
-      background: rgba(11,23,18,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      display: flex; align-items: center; padding: 0 5%;
-    }
-
-    .nav-inner {
-      width: 100%; max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-
-    .nav-brand {
-      display: flex; align-items: center; gap: 0.75rem;
-      cursor: pointer;
-    }
-
-    .nav-wordmark {
-      display: flex; flex-direction: column; line-height: 1.15;
-    }
-
-    .nav-wordmark .name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--on-dark-1); letter-spacing: 0.01em;
-    }
-
-    .nav-wordmark .tag {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.58rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--on-dark-3);
-    }
-
-    .nav-links {
-      display: flex; gap: 2rem; list-style: none; align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 0.85rem; font-weight: 500;
-      color: var(--on-dark-2); transition: color 0.2s; cursor: pointer;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1px; background: var(--terracotta);
-      transform: scaleX(0); transform-origin: left; transition: transform 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--on-dark-1); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-links a.active-link { color: var(--on-dark-1); }
-    .nav-links a.active-link::after { transform: scaleX(1); }
-
-    .nav-cta {
-      background: var(--terracotta) !important;
-      color: var(--white) !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 50px;
-      font-weight: 600 !important;
-      transition: background 0.2s, transform 0.15s !important;
-    }
-
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: #a85538 !important; transform: translateY(-1px); }
-
-    /* ─── Buttons ─── */
-    .btn {
-      display: inline-block; padding: 0.9rem 2rem;
-      border-radius: 50px; font-size: 0.9rem; font-weight: 600;
-      transition: all 0.25s; cursor: pointer;
-      border: none; font-family: 'Inter', sans-serif; letter-spacing: 0.01em;
-    }
-
-    .btn-primary {
-      background: var(--terracotta); color: var(--white);
-      box-shadow: 0 4px 20px rgba(192,105,74,0.35);
-    }
-    .btn-primary:hover { background: #a85538; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(192,105,74,0.4); }
-
-    .btn-outline-light {
-      background: transparent; color: var(--on-dark-1);
-      border: 1.5px solid rgba(240,235,224,0.3);
-    }
-    .btn-outline-light:hover { border-color: var(--on-dark-1); background: rgba(240,235,224,0.07); }
-
-    .btn-outline-dark {
-      background: transparent; color: var(--text);
-      border: 1.5px solid var(--tan);
-    }
-    .btn-outline-dark:hover { border-color: var(--ink-lite); color: var(--ink-lite); }
-
-    /* ─── Section utils ─── */
-    .section { padding: 100px 5%; }
-    .section-sm { padding: 70px 5%; }
-
-    .label {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--terracotta); margin-bottom: 1rem;
-    }
-    .label::before { content: ''; display: block; width: 22px; height: 1px; background: var(--terracotta); }
-
-    .label-sage { color: var(--sage-lite) !important; }
-    .label-sage::before { background: var(--sage-lite) !important; }
-
-    .label-gold { color: var(--gold) !important; }
-    .label-gold::before { background: var(--gold) !important; }
-
-    .section-title { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--ink-lite); margin-bottom: 1rem; }
-    .section-title-light { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--on-dark-1); margin-bottom: 1rem; }
-    .section-sub { font-size: 1rem; color: var(--sub); max-width: 580px; line-height: 1.8; }
-    .section-sub-light { font-size: 1rem; color: var(--on-dark-2); max-width: 580px; line-height: 1.8; }
-
-    /* ─── FOOTER ─── */
-    footer { background: var(--ink); padding: 4rem 5% 2rem; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-
-    .footer-brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; font-weight: 700; color: var(--on-dark-1); margin-bottom: 0.6rem;
-    }
-    .footer-brand p { font-size: 0.84rem; color: var(--on-dark-3); line-height: 1.7; max-width: 280px; margin-bottom: 1.5rem; }
-
-    .footer-cta-pill {
-      display: inline-block;
-      background: var(--terracotta); color: var(--white);
-      padding: 0.55rem 1.2rem; border-radius: 50px;
-      font-size: 0.8rem; font-weight: 600; cursor: pointer;
-      transition: background 0.2s;
-    }
-    .footer-cta-pill:hover { background: #a85538; }
-
-    .footer-col h5 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--on-dark-3); margin-bottom: 1rem;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer-col a { font-size: 0.85rem; color: var(--on-dark-2); transition: color 0.2s; cursor: pointer; }
-    .footer-col a:hover { color: var(--on-dark-1); }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding-top: 1.75rem;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-bottom p { font-size: 0.78rem; color: var(--on-dark-3); }
-
-    /* ══════════════════════════════════════════
-       HOME PAGE
-    ══════════════════════════════════════════ */
-
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      background: var(--ink);
-      display: flex; flex-direction: column;
-      padding-top: 72px;
-      position: relative; overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 55% 60% at 75% 45%, rgba(109,148,120,0.10) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 45% at 15% 75%, rgba(192,105,74,0.07) 0%, transparent 60%);
-    }
-
-    .hero-body {
-      flex: 1; display: flex; align-items: center;
-      padding: 60px 5%;
-      position: relative; z-index: 1;
-    }
-
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 400px;
-      gap: 5rem; align-items: center;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--sage-lite); margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--sage); }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 5vw, 4rem);
-      color: var(--on-dark-1); margin-bottom: 1.5rem; font-weight: 600;
-    }
-    .hero h1 em { font-style: italic; color: var(--terracotta); }
-
-    .hero-sub { font-size: 1.1rem; color: var(--on-dark-2); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8; }
-
-    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    /* Hero panel */
-    .hero-panel {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 18px; padding: 2rem;
-    }
-
-    .panel-label {
-      font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--sage-lite); margin-bottom: 1.5rem;
-    }
-
-    .panel-item {
-      display: flex; gap: 1rem; padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .panel-item:last-of-type { border-bottom: none; }
-
-    .panel-num {
-      width: 30px; height: 30px; min-width: 30px;
-      border-radius: 50%; border: 1px solid rgba(109,148,120,0.4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; font-weight: 600; color: var(--sage-lite);
-    }
-
-    .panel-item h4 { font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--on-dark-1); margin-bottom: 0.2rem; }
-    .panel-item p { font-size: 0.77rem; color: var(--on-dark-2); line-height: 1.5; }
-
-    .panel-cta {
-      display: block; width: 100%; margin-top: 1.5rem;
-      background: var(--terracotta); color: var(--white);
-      padding: 0.85rem; border-radius: 50px; text-align: center;
-      font-size: 0.85rem; font-weight: 600; cursor: pointer;
-      transition: background 0.2s;
-    }
-    .panel-cta:hover { background: #a85538; }
-    .panel-note { text-align: center; font-size: 0.7rem; color: var(--on-dark-3); margin-top: 0.75rem; }
-
-    /* Trust bar */
-    .trust-bar {
-      background: var(--ink-mid);
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding: 1.25rem 5%;
-      position: relative; z-index: 1;
-    }
-
-    .trust-bar-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: center;
-      gap: 3rem; flex-wrap: wrap;
-    }
-
-    .trust-item {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-size: 0.82rem; color: var(--on-dark-2); font-weight: 500;
-    }
-
-    .trust-dot {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: rgba(109,148,120,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.6rem; color: var(--sage-lite);
-    }
-
-    /* ─ Problem ─ */
-    .problem-section { background: var(--cream); padding: 100px 5%; }
-    .prob-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
-    }
-
-    .problem-points { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2.5rem; }
-
-    .prob-card {
-      display: flex; gap: 1.1rem; align-items: flex-start;
-      padding: 1.25rem; border-radius: 12px;
-      background: var(--white);
-      border-left: 3px solid transparent;
-      transition: border-color 0.25s, box-shadow 0.25s;
-    }
-    .prob-card:hover { border-color: var(--terracotta); box-shadow: var(--card-shadow); }
-
-    .prob-icon {
-      width: 38px; height: 38px; min-width: 38px;
-      border-radius: 9px; background: var(--sand);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-    }
-
-    .prob-card h4 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
-    .prob-card p { font-size: 0.82rem; color: var(--sub); line-height: 1.6; }
-
-    .trust-callout {
-      background: var(--ink);
-      border-radius: 20px; padding: 2.5rem; color: var(--on-dark-1);
-    }
-    .tc-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-lite); margin-bottom: 1.25rem; }
-    .trust-callout h3 { font-size: 1.55rem; color: var(--on-dark-1); margin-bottom: 1.25rem; line-height: 1.3; }
-    .trust-callout p { font-size: 0.9rem; color: var(--on-dark-2); line-height: 1.8; margin-bottom: 1.25rem; }
-    .trust-hr { height: 1px; background: rgba(255,255,255,0.08); margin: 1.5rem 0; }
-    .trust-quote { font-style: italic; font-size: 0.95rem; color: var(--gold); line-height: 1.65; }
-
-    /* ─ Approach ─ */
-    .approach-section { background: var(--ink-mid); padding: 100px 5%; }
-    .approach-inner { max-width: 1200px; margin: 0 auto; }
-
-    .approach-header {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; margin-bottom: 3.5rem; align-items: end;
-    }
-
-    .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
-
-    .pillar {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-top: 3px solid transparent;
-      border-radius: 16px; padding: 2rem;
-      transition: transform 0.25s, border-color 0.25s;
-    }
-    .pillar:hover { transform: translateY(-4px); }
-    .pillar.p1 { border-top-color: var(--terracotta); }
-    .pillar.p2 { border-top-color: var(--sage); }
-    .pillar.p3 { border-top-color: var(--gold); }
-
-    .pillar-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem; font-weight: 700; line-height: 1; margin-bottom: 1rem;
-    }
-    .p1 .pillar-num { color: var(--terracotta); }
-    .p2 .pillar-num { color: var(--sage-lite); }
-    .p3 .pillar-num { color: var(--gold); }
-
-    .pillar h3 { font-size: 1.1rem; color: var(--on-dark-1); margin-bottom: 0.5rem; }
-    .pillar p { font-size: 0.83rem; color: var(--on-dark-2); line-height: 1.65; }
-
-    .founder-bar {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-left: 3px solid var(--sage);
-      border-radius: 0 14px 14px 0;
-      padding: 1.5rem 2rem;
-      display: flex; gap: 1.5rem; align-items: flex-start;
-    }
-    .fb-icon { font-size: 1.8rem; }
-    .founder-bar h4 { font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--on-dark-1); margin-bottom: 0.35rem; }
-    .founder-bar p { font-size: 0.83rem; color: var(--on-dark-2); line-height: 1.65; }
-
-    /* ─ Services overview ─ */
-    .svc-overview { background: var(--ink); padding: 100px 5%; }
-    .svc-overview-inner { max-width: 1200px; margin: 0 auto; }
-
-    .svc-grid {
-      display: grid; grid-template-columns: repeat(2,1fr);
-      gap: 1.25rem; margin-top: 3.5rem;
-    }
-
-    .svc-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px; padding: 2rem;
-      transition: all 0.25s; display: flex; flex-direction: column;
-    }
-    .svc-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); }
-
-    .svc-card.flagship {
-      grid-column: span 2;
-      background: var(--ink-lite);
-      border-color: rgba(255,255,255,0.1);
-      flex-direction: row; gap: 3rem; align-items: center;
-    }
-
-    .svc-icon { font-size: 1.75rem; margin-bottom: 1rem; }
-    .svc-sub-label { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-3); margin-bottom: 0.4rem; }
-    .svc-card h3 { font-size: 1.15rem; color: var(--on-dark-1); margin-bottom: 0.6rem; }
-    .svc-card p { font-size: 0.85rem; color: var(--on-dark-2); line-height: 1.65; flex: 1; }
-
-    .svc-learn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.8rem; font-weight: 600;
-      color: var(--terracotta); margin-top: 1.25rem; cursor: pointer;
-      transition: gap 0.2s;
-    }
-    .svc-learn:hover { gap: 0.65rem; }
-    .flagship .svc-learn { color: var(--gold); }
-
-    .flagship-left { flex: 1; }
-    .flagship-right {
-      width: 240px; min-width: 240px;
-      background: rgba(0,0,0,0.2);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px; padding: 1.5rem;
-    }
-    .flagship-right h5 { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--sage-lite); margin-bottom: 1rem; }
-    .flagship-right ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-    .flagship-right li { font-size: 0.78rem; color: var(--on-dark-2); display: flex; align-items: flex-start; gap: 0.5rem; }
-    .flagship-right li::before { content: '✓'; color: var(--sage-lite); font-size: 0.7rem; margin-top: 2px; }
-
-    /* ─ Why section ─ */
-    .why-section { background: var(--cream); padding: 100px 5%; }
-    .why-inner { max-width: 1200px; margin: 0 auto; }
-
-    .why-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 1.25rem; margin-top: 3.5rem;
-    }
-
-    .why-card {
-      border-radius: 14px; padding: 1.75rem;
-      border: 1px solid var(--tan);
-      transition: all 0.25s;
-    }
-    .why-card:hover { border-color: var(--ink-lite); background: var(--white); box-shadow: var(--card-shadow); }
-
-    .why-icon { font-size: 1.4rem; margin-bottom: 0.85rem; }
-    .why-card h4 { font-size: 1rem; color: var(--ink-lite); margin-bottom: 0.4rem; }
-    .why-card p { font-size: 0.83rem; color: var(--sub); line-height: 1.65; }
-
-    /* ─ Audit CTA ─ */
-    .audit-section { background: var(--ink-mid); padding: 100px 5%; }
-    .audit-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-    }
-
-    .audit-card {
-      background: var(--ink-lite);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px; padding: 2.5rem;
-    }
-
-    .audit-price { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1.5rem; }
-    .audit-amount { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--gold); font-weight: 700; line-height: 1; }
-    .audit-desc { font-size: 0.85rem; color: var(--on-dark-3); }
-
-    .audit-card h3 { font-size: 1.3rem; color: var(--on-dark-1); margin-bottom: 1.25rem; }
-
-    .audit-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
-    .audit-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem; color: var(--on-dark-2); }
-    .audit-list li::before {
-      content: '✓'; width: 20px; height: 20px; min-width: 20px;
-      border-radius: 50%; background: rgba(109,148,120,0.18);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.62rem; color: var(--sage-lite); margin-top: 2px;
-    }
-
-    .audit-note { font-size: 0.76rem; color: var(--on-dark-3); font-style: italic; margin-top: 1rem; }
-
-    /* ══════════════════════════════════════════
-       PAGE HERO (shared)
-    ══════════════════════════════════════════ */
-    .page-hero {
-      background: var(--ink);
-      padding: 145px 5% 90px; text-align: center;
-    }
-
-    .page-hero .label { justify-content: center; }
-    .page-hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--on-dark-1); max-width: 720px; margin: 0 auto 1.25rem; }
-    .page-hero p { font-size: 1rem; color: var(--on-dark-2); max-width: 560px; margin: 0 auto; line-height: 1.8; }
-
-    /* ══════════════════════════════════════════
-       HOW IT WORKS
-    ══════════════════════════════════════════ */
-    .steps-section { background: var(--white); padding: 100px 5%; }
-    .steps-inner { max-width: 900px; margin: 0 auto; }
-
-    .step-block {
-      display: grid; grid-template-columns: 80px 1fr;
-      gap: 2.5rem; padding: 3rem 0;
-      border-bottom: 1px solid var(--sand);
-      position: relative;
-    }
-    .step-block:last-child { border-bottom: none; }
-    .step-block::before {
-      content: '';
-      position: absolute; top: 80px; left: 39px;
-      width: 2px; height: calc(100% - 80px);
-      background: var(--sand);
-    }
-    .step-block:last-child::before { display: none; }
-
-    .step-num {
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      border: 2px solid var(--tan);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem; color: var(--ink-lite);
-      background: var(--white); z-index: 1; position: relative; flex-shrink: 0;
-      transition: all 0.25s;
-    }
-    .step-block:hover .step-num { background: var(--ink); border-color: var(--ink); color: var(--on-dark-1); }
-
-    .step-content { padding-top: 1.2rem; }
-    .step-tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.4rem; }
-    .step-content h3 { font-size: 1.5rem; color: var(--ink-lite); margin-bottom: 0.75rem; }
-    .step-content > p { font-size: 0.9rem; color: var(--sub); line-height: 1.78; margin-bottom: 1.25rem; }
-
-    .step-detail {
-      background: var(--cream); border-radius: 12px; padding: 1.25rem 1.5rem;
-    }
-    .step-detail h5 { font-family: 'Inter', sans-serif; font-size: 0.76rem; font-weight: 600; color: var(--ink-lite); margin-bottom: 0.75rem; }
-    .step-detail ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .step-detail li { font-size: 0.82rem; color: var(--sub); display: flex; gap: 0.5rem; }
-    .step-detail li::before { content: '→'; color: var(--terracotta); }
-
-    .systems-bar { background: var(--ink); padding: 60px 5%; }
-    .systems-bar-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-    .systems-bar h3 { font-size: 1.4rem; color: var(--on-dark-1); margin-bottom: 0.75rem; }
-    .systems-bar p { font-size: 0.9rem; color: var(--on-dark-2); line-height: 1.78; }
-
-    /* ══════════════════════════════════════════
-       SERVICES PAGE
-    ══════════════════════════════════════════ */
-    .sd-section { padding: 100px 5%; }
-    .sd-section.dark { background: var(--ink); }
-    .sd-section.mid { background: var(--ink-mid); }
-    .sd-section.light { background: var(--cream); }
-    .sd-section.white { background: var(--white); }
-
-    .sd-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
-    }
-    .sd-inner.rev { direction: rtl; }
-    .sd-inner.rev > * { direction: ltr; }
-
-    .sd-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
-    .sd-left h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 1rem; }
-    .sd-left p { font-size: 0.925rem; line-height: 1.82; margin-bottom: 1.4rem; }
-
-    .sd-highlight {
-      border-radius: 0 12px 12px 0; padding: 1rem 1.25rem;
-      font-size: 0.875rem; font-style: italic; line-height: 1.65;
-      margin-bottom: 1.4rem;
-    }
-
-    .dark .sd-highlight,
-    .mid .sd-highlight { background: rgba(255,255,255,0.06); border-left: 3px solid var(--terracotta); color: var(--on-dark-2); }
-    .light .sd-highlight,
-    .white .sd-highlight { background: var(--sand); border-left: 3px solid var(--terracotta); color: var(--text); }
-
-    .dark .sd-left h2,
-    .mid .sd-left h2 { color: var(--on-dark-1); }
-    .dark .sd-left p,
-    .mid .sd-left p { color: var(--on-dark-2); }
-    .light .sd-left h2,
-    .white .sd-left h2 { color: var(--ink-lite); }
-    .light .sd-left p,
-    .white .sd-left p { color: var(--sub); }
-
-    .sd-right-box {
-      border-radius: 18px; padding: 2.5rem;
-      position: sticky; top: 100px;
-    }
-    .dark .sd-right-box,
-    .mid .sd-right-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
-    .light .sd-right-box,
-    .white .sd-right-box { background: var(--ink); }
-
-    .sd-right-box h4 { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-lite); margin-bottom: 1.25rem; }
-    .sd-right-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
-    .sd-right-box li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem; color: var(--on-dark-2); padding-bottom: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .sd-right-box li:last-child { border-bottom: none; }
-    .sd-right-box li::before {
-      content: '✓'; width: 19px; height: 19px; min-width: 19px;
-      border-radius: 50%; background: rgba(109,148,120,0.18);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.6rem; color: var(--sage-lite); margin-top: 2px;
-    }
-
-    .flagship-section { background: var(--ink-lite); padding: 100px 5%; }
-    .flagship-inner { max-width: 1200px; margin: 0 auto; }
-    .flagship-inner h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--on-dark-1); margin-bottom: 1rem; }
-
-    .fs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
-    .fs-card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1.75rem; }
-    .fs-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-    .fs-card h4 { font-size: 1rem; color: var(--on-dark-1); margin-bottom: 0.4rem; }
-    .fs-card p { font-size: 0.83rem; color: var(--on-dark-2); line-height: 1.65; }
-
-    /* ══════════════════════════════════════════
-       FOR THERAPISTS
-    ══════════════════════════════════════════ */
-    .therapist-hero { background: var(--cream); padding: 145px 5% 90px; }
-    .th-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .therapist-hero h1 { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--ink-lite); margin-bottom: 1.25rem; }
-    .therapist-hero p { font-size: 1rem; color: var(--sub); line-height: 1.8; margin-bottom: 1.25rem; }
-
-    .th-panel { background: var(--ink); border-radius: 20px; padding: 2.5rem; }
-    .th-panel h3 { font-size: 1.2rem; color: var(--on-dark-1); margin-bottom: 1.5rem; }
-
-    .concern { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .concern:last-child { border-bottom: none; }
-    .concern-icon { width: 36px; height: 36px; min-width: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
-    .concern h5 { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--on-dark-1); margin-bottom: 0.2rem; }
-    .concern p { font-size: 0.78rem; color: var(--on-dark-2); line-height: 1.5; }
-
-    .ethics-section { background: var(--white); padding: 100px 5%; }
-    .ethics-inner { max-width: 1200px; margin: 0 auto; }
-    .ethics-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin-top: 3rem; }
-
-    .ethics-card { border-radius: 16px; padding: 2rem; border: 1px solid var(--tan); display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; transition: all 0.25s; }
-    .ethics-card:hover { border-color: var(--ink-lite); box-shadow: var(--card-shadow); }
-    .ethics-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--sand); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
-    .ethics-card h4 { font-size: 1rem; color: var(--ink-lite); margin-bottom: 0.4rem; }
-    .ethics-card p { font-size: 0.83rem; color: var(--sub); line-height: 1.65; }
-
-    .promise-section { background: var(--ink); padding: 80px 5%; text-align: center; }
-    .promise-inner { max-width: 700px; margin: 0 auto; }
-    .promise-section h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--on-dark-1); margin-bottom: 1.25rem; }
-    .promise-section p { font-size: 0.95rem; color: var(--on-dark-2); line-height: 1.8; margin-bottom: 2rem; }
-
-    /* ══════════════════════════════════════════
-       ABOUT
-    ══════════════════════════════════════════ */
-    .about-hero { background: var(--cream); padding: 145px 5% 90px; }
-    .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 5rem; align-items: center; }
-    .about-hero h1 { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--ink-lite); margin-bottom: 1.25rem; }
-    .about-hero p { font-size: 1rem; color: var(--sub); line-height: 1.8; margin-bottom: 1.25rem; }
-
-    .founder-card { background: var(--ink); border-radius: 20px; padding: 2.5rem; }
-    .founder-avatar { width: 76px; height: 76px; border-radius: 50%; background: var(--ink-lite); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.25rem; }
-    .founder-card h3 { font-size: 1.25rem; color: var(--on-dark-1); margin-bottom: 0.2rem; }
-    .founder-title { font-size: 0.78rem; color: var(--sage-lite); margin-bottom: 1.5rem; }
-    .cred-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .cred-list li { display: flex; gap: 0.75rem; align-items: center; font-size: 0.83rem; color: var(--on-dark-2); }
-    .cred-icon { width: 28px; height: 28px; min-width: 28px; border-radius: 6px; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-
-    .values-section { background: var(--white); padding: 100px 5%; }
-    .values-inner { max-width: 1200px; margin: 0 auto; }
-    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
-
-    .value-card { padding: 2rem; border-radius: 16px; border: 1px solid var(--tan); transition: all 0.25s; }
-    .value-card:hover { border-color: var(--ink-lite); background: var(--cream); box-shadow: var(--card-shadow); }
-    .value-num { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--sand); line-height: 1; margin-bottom: 0.75rem; }
-    .value-card h4 { font-size: 1rem; color: var(--ink-lite); margin-bottom: 0.4rem; }
-    .value-card p { font-size: 0.83rem; color: var(--sub); line-height: 1.65; }
-
-    .mission-section { background: var(--ink); padding: 80px 5%; text-align: center; }
-    .mission-inner { max-width: 750px; margin: 0 auto; }
-    .mission-section h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--on-dark-1); margin-bottom: 1.25rem; }
-    .mission-section p { font-size: 1rem; color: var(--on-dark-2); line-height: 1.85; }
-
-    /* ══════════════════════════════════════════
-       CASE STUDIES
-    ══════════════════════════════════════════ */
-    .cases-section { background: var(--white); padding: 100px 5%; }
-    .cases-inner { max-width: 1200px; margin: 0 auto; }
-
-    .case-card {
-      display: grid; grid-template-columns: 1fr 1fr;
-      border-radius: 18px; overflow: hidden;
-      border: 1px solid var(--tan); margin-bottom: 2rem;
-      transition: box-shadow 0.25s;
-    }
-    .case-card:hover { box-shadow: 0 8px 40px rgba(11,23,18,0.12); }
-
-    .case-before { background: var(--cream); padding: 2.5rem; }
-    .case-after { background: var(--ink); padding: 2.5rem; }
-
-    .case-lbl { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
-    .case-before .case-lbl { color: var(--taupe); }
-    .case-after .case-lbl { color: var(--sage-lite); }
-
-    .case-before h3 { font-size: 1.1rem; color: var(--text); margin-bottom: 0.75rem; }
-    .case-after h3 { font-size: 1.1rem; color: var(--on-dark-1); margin-bottom: 0.75rem; }
-    .case-before p { font-size: 0.875rem; color: var(--sub); line-height: 1.72; }
-    .case-after p { font-size: 0.875rem; color: var(--on-dark-2); line-height: 1.72; }
-
-    .case-metric { display: flex; align-items: baseline; gap: 0.4rem; margin-top: 1.25rem; }
-    .metric-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold); }
-    .metric-desc { font-size: 0.82rem; color: var(--on-dark-3); }
-
-    .placeholder-badge { display: inline-block; background: rgba(192,105,74,0.12); color: var(--terracotta); font-size: 0.67rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 50px; margin-bottom: 0.75rem; }
-
-    .case-invite { background: var(--cream); border-radius: 16px; padding: 2.5rem; text-align: center; border: 1px dashed var(--tan); }
-    .case-invite h3 { font-size: 1.3rem; color: var(--ink-lite); margin-bottom: 0.75rem; }
-    .case-invite p { font-size: 0.9rem; color: var(--sub); max-width: 460px; margin: 0 auto 1.5rem; line-height: 1.75; }
-
-    /* ══════════════════════════════════════════
-       CONTACT
-    ══════════════════════════════════════════ */
-    .contact-hero { background: var(--ink); padding: 145px 5% 90px; text-align: center; }
-    .contact-hero h1 { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--on-dark-1); margin-bottom: 1rem; }
-    .contact-hero p { font-size: 1.05rem; color: var(--on-dark-2); max-width: 520px; margin: 0 auto; line-height: 1.8; }
-
-    .contact-options { background: var(--cream); padding: 100px 5%; }
-    .co-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-
-    .co-card { background: var(--white); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--tan); display: flex; flex-direction: column; }
-    .co-card.primary { background: var(--ink); border-color: transparent; }
-
-    .co-icon { font-size: 2rem; margin-bottom: 1.25rem; }
-    .co-price { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 0.25rem; }
-    .co-card h3 { font-size: 1.3rem; margin-bottom: 0.6rem; }
-    .co-card.primary h3 { color: var(--on-dark-1); }
-    .co-card:not(.primary) h3 { color: var(--ink-lite); }
-    .co-card p { font-size: 0.875rem; line-height: 1.75; margin-bottom: 1.5rem; flex: 1; }
-    .co-card.primary p { color: var(--on-dark-2); }
-    .co-card:not(.primary) p { color: var(--sub); }
-
-    .co-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
-    .co-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.83rem; }
-    .co-card.primary .co-list li { color: var(--on-dark-2); }
-    .co-card:not(.primary) .co-list li { color: var(--sub); }
-    .co-list li::before { content: '✓'; width: 18px; height: 18px; min-width: 18px; border-radius: 50%; background: rgba(109,148,120,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: var(--sage); }
-
-    .contact-form-section { background: var(--ink-mid); padding: 80px 5%; }
-    .cf-inner { max-width: 680px; margin: 0 auto; }
-    .cf-inner h2 { font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--on-dark-1); margin-bottom: 0.5rem; text-align: center; }
-    .cf-sub { font-size: 0.88rem; color: var(--on-dark-2); text-align: center; margin-bottom: 2.5rem; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-    .form-group.full { grid-column: span 2; }
-    .form-group label { font-size: 0.76rem; font-weight: 600; color: var(--on-dark-2); letter-spacing: 0.04em; }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: 0.85rem 1rem; border-radius: 8px;
-      border: 1.5px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
-      font-family: 'Inter', sans-serif; font-size: 0.875rem;
-      color: var(--on-dark-1); outline: none; transition: border-color 0.2s; width: 100%;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--on-dark-3); }
-    .form-group select option { background: var(--ink-mid); color: var(--on-dark-1); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--terracotta); }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-
-    .form-submit {
-      width: 100%; padding: 1rem; background: var(--terracotta); color: var(--white);
-      border: none; border-radius: 50px; font-family: 'Inter', sans-serif;
-      font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s; margin-top: 0.5rem;
-    }
-    .form-submit:hover { background: #a85538; transform: translateY(-2px); }
-
-    /* ─── Responsive ─── */
-    @media (max-width: 900px) {
-      .hero-inner, .prob-inner, .approach-header, .audit-inner,
-      .sd-inner, .about-inner, .th-inner, .co-inner, .case-card { grid-template-columns: 1fr; }
-      .sd-inner.rev { direction: ltr; }
-      .svc-grid { grid-template-columns: 1fr; }
-      .svc-card.flagship { flex-direction: column; grid-column: span 1; }
-      .flagship-right { width: 100%; min-width: unset; }
-      .pillars, .why-grid, .values-grid, .fs-grid, .ethics-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .nav-links { display: none; }
-      .step-block { grid-template-columns: 60px 1fr; }
-      .step-num { width: 60px; height: 60px; font-size: 1.3rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .form-group.full { grid-column: span 1; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --slate:#2F3A44;--slate-deep:#232C34;--slate-mid:#3D4A55;
+      --mist:#8FA7B5;--mist-light:#B3C7D1;--mist-pale:rgba(143,167,181,0.12);
+      --sage:#8DAA9D;--sage-light:#A9C2B7;--sage-pale:rgba(141,170,157,0.12);
+      --offwhite:#F6F1EA;--sand:#D8CBBE;--sand-pale:#EDE7DE;
+      --clay:#C47C62;--clay-deep:#A8644C;--clay-pale:rgba(196,124,98,0.1);
+      --white:#FFFFFF;--text:#2F3A44;--sub:#5F6B73;
+      --light-text:#F0ECE5;--on-dark-2:rgba(240,236,229,0.65);--on-dark-3:rgba(240,236,229,0.38);
+      --radius:12px;--shadow:0 2px 20px rgba(47,58,68,0.08)
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:'DM Sans',sans-serif;background:var(--offwhite);color:var(--text);line-height:1.72;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4,h5{font-family:'DM Serif Display',serif;line-height:1.22;font-weight:400}
+    a{color:inherit;text-decoration:none}
+    .page{display:none}.page.active{display:block}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;background:rgba(246,241,234,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--sand);display:flex;align-items:center;padding:0 5%}
+    .nav-inner{width:100%;max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{cursor:pointer;display:flex;flex-direction:column;line-height:1.15}
+    .nav-brand .name{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--slate)}
+    .nav-brand .tag{font-family:'DM Sans',sans-serif;font-size:0.56rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--mist)}
+    .nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+    .nav-links a{font-size:0.84rem;font-weight:500;color:var(--sub);transition:color 0.2s;cursor:pointer}
+    .nav-links a:hover{color:var(--slate)}
+    .nav-links a.act{color:var(--slate)}
+    .nav-cta{background:var(--clay)!important;color:var(--white)!important;padding:0.5rem 1.15rem;border-radius:8px;font-weight:600!important;transition:background 0.2s!important}
+    .nav-cta:hover{background:var(--clay-deep)!important}
+
+    .btn{display:inline-block;padding:0.85rem 1.75rem;border-radius:8px;font-size:0.88rem;font-weight:600;transition:all 0.25s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
+    .btn-clay{background:var(--clay);color:var(--white);box-shadow:0 3px 14px rgba(196,124,98,0.25)}
+    .btn-clay:hover{background:var(--clay-deep);transform:translateY(-2px);box-shadow:0 6px 20px rgba(196,124,98,0.3)}
+    .btn-outline{background:transparent;color:var(--slate);border:1.5px solid var(--sand)}
+    .btn-outline:hover{border-color:var(--slate);background:var(--sand-pale)}
+    .btn-outline-light{background:transparent;color:var(--light-text);border:1.5px solid rgba(240,236,229,0.3)}
+    .btn-outline-light:hover{border-color:var(--light-text);background:rgba(240,236,229,0.08)}
+
+    .label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.68rem;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:var(--clay);margin-bottom:0.85rem}
+    .label::before{content:'';width:20px;height:1.5px;background:var(--clay)}
+    .label-sage{color:var(--sage)}.label-sage::before{background:var(--sage)}
+    .section-title{font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--slate);margin-bottom:0.85rem}
+    .section-sub{font-size:0.98rem;color:var(--sub);max-width:560px;line-height:1.78}
+
+    footer{background:var(--slate-deep);padding:4rem 5% 2rem}
+    .footer-inner{max-width:1140px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+    .footer-brand-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--light-text);margin-bottom:0.6rem}
+    .footer-brand p{font-size:0.82rem;color:var(--on-dark-3);line-height:1.7;max-width:260px}
+    .footer-col h5{font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--on-dark-3);margin-bottom:0.85rem}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+    .footer-col a{font-size:0.84rem;color:var(--on-dark-2);transition:color 0.2s;cursor:pointer}
+    .footer-col a:hover{color:var(--light-text)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.75rem}
+    .footer-bottom p{font-size:0.76rem;color:var(--on-dark-3)}
+
+    .hero{padding:160px 5% 80px;background:var(--offwhite)}
+    .hero-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center}
+    .hero-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--clay);margin-bottom:1.25rem}
+    .hero h1{font-size:clamp(2.5rem,4.5vw,3.6rem);color:var(--slate);margin-bottom:1.25rem}
+    .hero h1 em{font-style:italic;color:var(--clay)}
+    .hero-sub{font-size:1.05rem;color:var(--sub);max-width:500px;margin-bottom:2.25rem;line-height:1.8}
+    .hero-btns{display:flex;gap:0.85rem;flex-wrap:wrap;margin-bottom:2rem}
+    .hero-promise{font-size:0.78rem;color:var(--mist);font-style:italic;max-width:420px;border-top:1px solid var(--sand);padding-top:1.25rem}
+    .hero-panel{background:var(--white);border:1px solid var(--sand);border-radius:16px;padding:2rem;box-shadow:var(--shadow)}
+    .hp-title{font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);margin-bottom:1.25rem}
+    .hp-item{display:flex;gap:0.85rem;padding:0.85rem 0;border-bottom:1px solid var(--sand-pale)}
+    .hp-item:last-of-type{border-bottom:none}
+    .hp-dot{width:7px;height:7px;min-width:7px;border-radius:50%;margin-top:6px}
+    .hp-item h4{font-family:'DM Sans',sans-serif;font-size:0.84rem;font-weight:600;color:var(--slate);margin-bottom:0.15rem}
+    .hp-item p{font-size:0.76rem;color:var(--sub);line-height:1.5}
+
+    .proof-bar{background:var(--slate-deep);padding:1.25rem 5%}
+    .pb-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+    .pb-item{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--on-dark-2);font-weight:500}
+    .pb-check{width:18px;height:18px;border-radius:50%;background:rgba(141,170,157,0.2);display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:var(--sage-light)}
+
+    .safe-section{background:var(--white);padding:100px 5%}
+    .safe-inner{max-width:1140px;margin:0 auto}
+    .safe-header{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:end;margin-bottom:3.5rem}
+    .safe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+    .safe-card{padding:1.75rem;border-radius:14px;border:1px solid var(--sand);transition:all 0.25s}
+    .safe-card:hover{border-color:var(--slate);box-shadow:var(--shadow)}
+    .safe-letter{font-family:'DM Serif Display',serif;font-size:3.5rem;color:var(--sand);line-height:1;margin-bottom:0.5rem;transition:color 0.25s}
+    .safe-card:hover .safe-letter{color:var(--clay)}
+    .safe-card h3{font-size:1rem;color:var(--slate);margin-bottom:0.4rem}
+    .safe-card p{font-size:0.82rem;color:var(--sub);line-height:1.62}
+
+    .svc-preview{background:var(--offwhite);padding:100px 5%}
+    .sp-inner{max-width:1140px;margin:0 auto}
+    .sp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+    .sp-card{background:var(--white);border:1px solid var(--sand);border-radius:14px;padding:2rem;transition:all 0.25s;display:flex;flex-direction:column}
+    .sp-card:hover{border-color:var(--slate-mid);box-shadow:var(--shadow);transform:translateY(-3px)}
+    .sp-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1rem}
+    .sp-card h3{font-size:1.1rem;color:var(--slate);margin-bottom:0.5rem}
+    .sp-card p{font-size:0.84rem;color:var(--sub);line-height:1.65;flex:1}
+    .sp-link{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.78rem;font-weight:600;color:var(--clay);margin-top:1rem;cursor:pointer;transition:gap 0.2s}
+    .sp-link:hover{gap:0.6rem}
+
+    .diff-section{background:var(--slate-deep);padding:100px 5%}
+    .diff-inner{max-width:1140px;margin:0 auto}
+    .diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:3rem}
+    .diff-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.75rem;display:grid;grid-template-columns:auto 1fr;gap:1.1rem}
+    .diff-icon{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+    .diff-card h4{font-size:0.95rem;color:var(--light-text);margin-bottom:0.3rem}
+    .diff-card p{font-size:0.82rem;color:var(--on-dark-2);line-height:1.62}
+
+    .faq-section{background:var(--white);padding:100px 5%}
+    .faq-inner{max-width:1140px;margin:0 auto}
+    .faq-header{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:end;margin-bottom:3rem}
+    .faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+    .faq-item{border:1px solid var(--sand);border-radius:12px;padding:1.5rem;transition:all 0.25s;cursor:pointer}
+    .faq-item:hover{border-color:var(--slate-mid);box-shadow:var(--shadow)}
+    .faq-q{font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;color:var(--slate);margin-bottom:0.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+    .faq-a{font-size:0.83rem;color:var(--sub);line-height:1.65;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-toggle{font-size:1rem;color:var(--mist);transition:transform 0.2s;flex-shrink:0}
+    .faq-item.open .faq-toggle{transform:rotate(45deg)}
+
+    .cta-section{background:var(--offwhite);padding:80px 5%;text-align:center}
+    .cta-inner{max-width:640px;margin:0 auto}
+    .cta-section h2{font-size:clamp(1.8rem,3vw,2.4rem);color:var(--slate);margin-bottom:1rem}
+    .cta-section p{font-size:0.95rem;color:var(--sub);margin-bottom:2rem;line-height:1.78}
+
+    .svc-detail{padding:100px 5%}
+    .svc-detail.white{background:var(--white)}.svc-detail.cream{background:var(--offwhite)}
+    .sd-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .sd-inner.rev{direction:rtl}.sd-inner.rev>*{direction:ltr}
+    .sd-icon{font-size:2rem;margin-bottom:1.25rem}
+    .sd-left h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--slate);margin-bottom:0.85rem}
+    .sd-left p{font-size:0.92rem;color:var(--sub);line-height:1.78;margin-bottom:1.25rem}
+    .sd-highlight{background:var(--sage-pale);border-left:3px solid var(--sage);border-radius:0 10px 10px 0;padding:1rem 1.25rem;font-size:0.85rem;color:var(--text);font-style:italic;line-height:1.65;margin-bottom:1.25rem}
+    .sd-box{background:var(--slate-deep);border-radius:16px;padding:2.25rem;position:sticky;top:88px}
+    .sd-box h4{font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-light);margin-bottom:1.1rem}
+    .sd-box ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+    .sd-box li{display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--on-dark-2);padding-bottom:0.7rem;border-bottom:1px solid rgba(255,255,255,0.07)}
+    .sd-box li:last-child{border-bottom:none}
+    .sd-box li::before{content:'✓';width:16px;min-width:16px;font-size:0.6rem;color:var(--sage-light);margin-top:3px}
+    .addons-section{background:var(--sand-pale);padding:60px 5%}
+    .addons-inner{max-width:1140px;margin:0 auto;text-align:center}
+    .addons-inner h3{font-size:1.4rem;color:var(--slate);margin-bottom:0.5rem}
+    .addons-inner>p{font-size:0.88rem;color:var(--sub);margin-bottom:2rem}
+    .addon-tags{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
+    .addon-tag{background:var(--white);border:1px solid var(--sand);border-radius:50px;padding:0.55rem 1.25rem;font-size:0.82rem;color:var(--slate);font-weight:500;transition:all 0.2s}
+    .addon-tag:hover{border-color:var(--clay);color:var(--clay)}
+
+    .process-hero{background:var(--offwhite);padding:145px 5% 80px}
+    .ph-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .process-hero h1{font-size:clamp(2.2rem,4vw,3rem);color:var(--slate);margin-bottom:1.25rem}
+    .process-hero p{font-size:1rem;color:var(--sub);line-height:1.8;margin-bottom:1.25rem}
+    .boundary-panel{background:var(--slate-deep);border-radius:18px;padding:2.5rem}
+    .bp-title{font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-light);margin-bottom:1.5rem}
+    .bp-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .bp-col h4{font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;margin-bottom:0.85rem}
+    .bp-will h4{color:var(--sage-light)}.bp-wont h4{color:var(--clay)}
+    .bp-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+    .bp-col li{font-size:0.8rem;color:var(--on-dark-2);display:flex;gap:0.5rem;line-height:1.5}
+    .bp-will li::before{content:'✓';color:var(--sage-light);font-size:0.7rem}
+    .bp-wont li::before{content:'✗';color:var(--clay);font-size:0.7rem}
+
+    .workflow-section{background:var(--white);padding:100px 5%}
+    .wf-inner{max-width:900px;margin:0 auto}
+    .wf-step{display:grid;grid-template-columns:60px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--sand)}
+    .wf-step:last-child{border-bottom:none}
+    .wf-num{width:48px;height:48px;border-radius:50%;background:var(--offwhite);border:1.5px solid var(--sand);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--slate);flex-shrink:0;transition:all 0.25s}
+    .wf-step:hover .wf-num{background:var(--clay);border-color:var(--clay);color:var(--white)}
+    .wf-content h3{font-size:1.15rem;color:var(--slate);margin-bottom:0.4rem}
+    .wf-content p{font-size:0.88rem;color:var(--sub);line-height:1.72}
+
+    .disclaimers-section{background:var(--offwhite);padding:80px 5%}
+    .disc-inner{max-width:800px;margin:0 auto}
+    .disc-inner h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--slate);margin-bottom:0.75rem;text-align:center}
+    .disc-sub{font-size:0.9rem;color:var(--sub);text-align:center;margin-bottom:2.5rem;line-height:1.75}
+    .disc-card{background:var(--white);border:1px solid var(--sand);border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+    .disc-card h4{font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;color:var(--slate);margin-bottom:0.4rem}
+    .disc-card p{font-size:0.82rem;color:var(--sub);line-height:1.6;font-style:italic}
+
+    .about-hero{background:var(--offwhite);padding:145px 5% 80px}
+    .ab-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:5rem;align-items:center}
+    .about-hero h1{font-size:clamp(2.2rem,4vw,3rem);color:var(--slate);margin-bottom:1.25rem}
+    .about-hero p{font-size:1rem;color:var(--sub);line-height:1.8;margin-bottom:1.25rem}
+    .founder-card{background:var(--slate-deep);border-radius:18px;padding:2.5rem}
+    .founder-card h3{font-size:1.2rem;color:var(--light-text);margin-bottom:0.2rem}
+    .founder-title{font-size:0.76rem;color:var(--sage-light);margin-bottom:1.5rem}
+    .cred-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem}
+    .cred-list li{display:flex;gap:0.65rem;align-items:flex-start;font-size:0.82rem;color:var(--on-dark-2);line-height:1.5}
+    .cred-list li::before{content:'';width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--sage);margin-top:6px}
+
+    .values-section{background:var(--white);padding:100px 5%}
+    .val-inner{max-width:1140px;margin:0 auto}
+    .val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:3rem}
+    .val-card{padding:1.75rem;border:1px solid var(--sand);border-radius:14px;transition:all 0.25s}
+    .val-card:hover{border-color:var(--slate);box-shadow:var(--shadow)}
+    .val-card h4{font-size:1rem;color:var(--slate);margin-bottom:0.4rem}
+    .val-card p{font-size:0.82rem;color:var(--sub);line-height:1.62}
+    .val-icon{font-size:1.5rem;margin-bottom:0.75rem}
+
+    .clinician-section{background:var(--offwhite);padding:80px 5%}
+    .clin-inner{max-width:800px;margin:0 auto;text-align:center}
+    .clin-inner h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--slate);margin-bottom:0.75rem}
+    .clin-inner>p{font-size:0.92rem;color:var(--sub);margin-bottom:2.5rem;line-height:1.78}
+    .clin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:left}
+    .clin-card{background:var(--white);border:1px solid var(--sand);border-radius:12px;padding:1.5rem}
+    .clin-card h4{font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;color:var(--slate);margin-bottom:0.3rem}
+    .clin-card p{font-size:0.8rem;color:var(--sub);line-height:1.6}
+
+    .resources-hero{background:var(--offwhite);padding:145px 5% 60px}
+    .rh-inner{max-width:1140px;margin:0 auto;text-align:center}
+    .resources-hero h1{font-size:clamp(2.2rem,4vw,3rem);color:var(--slate);margin-bottom:1rem}
+    .resources-hero p{font-size:1rem;color:var(--sub);max-width:540px;margin:0 auto;line-height:1.8}
+    .cat-bar{background:var(--white);border-top:1px solid var(--sand);border-bottom:1px solid var(--sand);padding:1rem 5%}
+    .cat-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
+    .cat-tag{background:var(--offwhite);border:1px solid var(--sand);border-radius:50px;padding:0.4rem 1rem;font-size:0.78rem;font-weight:500;color:var(--sub);transition:all 0.2s;cursor:pointer}
+    .cat-tag:hover,.cat-tag.active{background:var(--slate-deep);color:var(--light-text);border-color:var(--slate-deep)}
+    .articles-section{background:var(--offwhite);padding:60px 5% 100px}
+    .art-inner{max-width:1140px;margin:0 auto}
+    .art-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+    .art-card{background:var(--white);border:1px solid var(--sand);border-radius:14px;padding:1.75rem;transition:all 0.25s;cursor:pointer}
+    .art-card:hover{border-color:var(--slate-mid);box-shadow:var(--shadow)}
+    .art-cat{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--clay);margin-bottom:0.5rem}
+    .art-card h3{font-size:1.05rem;color:var(--slate);margin-bottom:0.4rem}
+    .art-card p{font-size:0.82rem;color:var(--sub);line-height:1.6}
+    .art-link{font-size:0.78rem;font-weight:600;color:var(--clay);margin-top:0.85rem;display:inline-block}
+
+    .contact-hero{background:var(--slate-deep);padding:145px 5% 80px;text-align:center}
+    .contact-hero h1{font-size:clamp(2.2rem,4vw,3rem);color:var(--light-text);margin-bottom:1rem}
+    .contact-hero p{font-size:1rem;color:var(--on-dark-2);max-width:540px;margin:0 auto;line-height:1.8}
+    .contact-section{background:var(--white);padding:80px 5%}
+    .cf-inner{max-width:700px;margin:0 auto}
+    .cf-inner h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--slate);margin-bottom:0.5rem;text-align:center}
+    .cf-sub{font-size:0.88rem;color:var(--sub);text-align:center;margin-bottom:2.5rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-group{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem}
+    .form-group.full{grid-column:span 2}
+    .form-group label{font-size:0.76rem;font-weight:600;color:var(--slate);letter-spacing:0.03em}
+    .form-group input,.form-group select,.form-group textarea{padding:0.8rem 1rem;border-radius:8px;border:1.5px solid var(--sand);background:var(--offwhite);font-family:'DM Sans',sans-serif;font-size:0.88rem;color:var(--text);outline:none;transition:border-color 0.2s;width:100%}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--clay)}
+    .form-group textarea{resize:vertical;min-height:110px}
+    .form-submit{width:100%;padding:1rem;background:var(--clay);color:var(--white);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:600;cursor:pointer;transition:all 0.25s;margin-top:0.5rem}
+    .form-submit:hover{background:var(--clay-deep);transform:translateY(-2px)}
+    .expect-section{background:var(--offwhite);padding:60px 5%}
+    .exp-inner{max-width:700px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;text-align:center}
+    .exp-card h4{font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;color:var(--slate);margin-bottom:0.3rem}
+    .exp-card p{font-size:0.8rem;color:var(--sub);line-height:1.5}
+    .exp-icon{font-size:1.4rem;margin-bottom:0.5rem}
+
+    @media(max-width:900px){
+      .hero-inner,.sd-inner,.ab-inner,.ph-inner,.safe-header,.faq-header{grid-template-columns:1fr}
+      .sd-inner.rev{direction:ltr}
+      .safe-grid,.sp-grid,.diff-grid,.faq-grid,.val-grid,.art-grid,.clin-grid{grid-template-columns:1fr}
+      .footer-top{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .form-row{grid-template-columns:1fr}.form-group.full{grid-column:span 1}
+      .bp-row,.exp-inner{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ LOGO SVG (inline definition, reused via <use>) ═══ -->
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <symbol id="rr-logo-icon" viewBox="0 0 44 52">
-      <!-- Roots -->
-      <path d="M22 36 C18 40 12 42 8 46" stroke="#9E6B4A" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M22 38 C22 42 22 46 22 50" stroke="#9E6B4A" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M22 36 C26 40 32 42 36 46" stroke="#9E6B4A" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M16 38 C13 41 10 44 7 48" stroke="#B07858" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.7"/>
-      <path d="M28 38 C31 41 34 44 37 48" stroke="#B07858" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.7"/>
-      <!-- Trunk -->
-      <rect x="19.5" y="22" width="5" height="16" rx="2.5" fill="#9E6B4A"/>
-      <!-- Left branches -->
-      <path d="M22 28 C16 26 10 20 8 14" stroke="#7A9E87" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M22 24 C17 20 14 14 13 8" stroke="#7A9E87" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <!-- Right branches -->
-      <path d="M22 28 C28 26 34 20 36 14" stroke="#7A9E87" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M22 24 C27 20 30 14 31 8" stroke="#7A9E87" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <!-- Top center branch -->
-      <path d="M22 22 C22 16 22 10 22 4" stroke="#7A9E87" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <!-- Leaf clusters -->
-      <circle cx="8" cy="12" r="5.5" fill="#6D9478" opacity="0.9"/>
-      <circle cx="13" cy="6" r="5" fill="#7AAB88" opacity="0.9"/>
-      <circle cx="22" cy="2" r="5.5" fill="#6D9478" opacity="0.9"/>
-      <circle cx="31" cy="6" r="5" fill="#7AAB88" opacity="0.9"/>
-      <circle cx="36" cy="12" r="5.5" fill="#6D9478" opacity="0.9"/>
-      <!-- Smaller inner leaves -->
-      <circle cx="8" cy="12" r="3" fill="#8AB599" opacity="0.6"/>
-      <circle cx="22" cy="2" r="3.5" fill="#8AB599" opacity="0.6"/>
-      <circle cx="36" cy="12" r="3" fill="#8AB599" opacity="0.6"/>
-    </symbol>
-  </defs>
-</svg>
+<nav><div class="nav-inner">
+  <div class="nav-brand" onclick="go('home')"><span class="name">Athenna Agency</span><span class="tag">Ethical Content Marketing for Clinicians</span></div>
+  <ul class="nav-links">
+    <li><a onclick="go('home')" data-page="home">Home</a></li>
+    <li><a onclick="go('services')" data-page="services">Services</a></li>
+    <li><a onclick="go('process')" data-page="process">Process & Ethics</a></li>
+    <li><a onclick="go('about')" data-page="about">About</a></li>
+    <li><a onclick="go('resources')" data-page="resources">Insights</a></li>
+    <li><a onclick="go('contact')" data-page="contact" class="nav-cta">Book a Discovery Call</a></li>
+  </ul>
+</div></nav>
 
-<!-- ═══ NAV ═══ -->
-<nav>
-  <div class="nav-inner">
-    <div class="nav-brand" onclick="navigate('home')">
-      <svg width="28" height="33" aria-hidden="true">
-        <use href="#rr-logo-icon"/>
-      </svg>
-      <div class="nav-wordmark">
-        <span class="name">Rooted Reach</span>
-        <span class="tag">Boutique Marketing for Mental Health Professionals</span>
-      </div>
-    </div>
-    <ul class="nav-links">
-      <li><a onclick="navigate('home')" data-page="home">Home</a></li>
-      <li><a onclick="navigate('how')" data-page="how">How It Works</a></li>
-      <li><a onclick="navigate('services')" data-page="services">Services</a></li>
-      <li><a onclick="navigate('therapists')" data-page="therapists">For Therapists</a></li>
-      <li><a onclick="navigate('about')" data-page="about">About</a></li>
-      <li><a onclick="navigate('cases')" data-page="cases">Case Studies</a></li>
-      <li><a onclick="navigate('contact')" data-page="contact" class="nav-cta">Book a Free Strategy Call</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- ═══════════════════════════════════════
-     HOME PAGE
-═══════════════════════════════════════ -->
+<!-- HOME -->
 <div id="page-home" class="page active">
+  <section class="hero"><div class="hero-inner"><div>
+    <div class="hero-eyebrow">Ethical Content Marketing for Clinicians</div>
+    <h1>Grow your practice with content that's clinically sound, ethically aligned, and <em>genuinely you.</em></h1>
+    <p class="hero-sub">We help licensed therapists, counselors, and health professionals build an authentic online presence through education-led content — without pressure tactics, ethical gray areas, or compromising your clinical voice.</p>
+    <div class="hero-btns"><a onclick="go('contact')" class="btn btn-clay">Schedule a Discovery Call</a><a onclick="go('process')" class="btn btn-outline">See Our Process</a></div>
+    <p class="hero-promise">"We won't use client stories or anything that risks identification. We don't do pressure tactics. We stay within your scope and comfort."</p>
+  </div><div>
+    <div class="hero-panel"><p class="hp-title">What makes this different</p>
+      <div class="hp-item"><div class="hp-dot" style="background:var(--sage)"></div><div><h4>Ethics-first content system</h4><p>Confidentiality-safe workflows, boundary-safe storytelling, content disclaimers, and risk-reduction review.</p></div></div>
+      <div class="hp-item"><div class="hp-dot" style="background:var(--clay)"></div><div><h4>Clinical voice translation</h4><p>Convert clinical nuance into clear, human psychoeducation — without sounding like an influencer.</p></div></div>
+      <div class="hp-item"><div class="hp-dot" style="background:var(--mist)"></div><div><h4>Fit-focused marketing</h4><p>Attract aligned clients, reduce misfit inquiries, and support healthy professional boundaries.</p></div></div>
+      <div class="hp-item"><div class="hp-dot" style="background:var(--slate-mid)"></div><div><h4>Nothing posts without your sign-off</h4><p>Full approval workflow, documentation, and clinician review before anything goes live.</p></div></div>
+    </div>
+  </div></div></section>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-body">
-      <div class="hero-inner">
-        <div>
-          <div class="hero-eyebrow">Boutique Marketing for Mental Health Professionals</div>
-          <h1>Grow your therapy practice through <em>trust and authority.</em></h1>
-          <p class="hero-sub">We turn your expertise into trust-building content and visibility systems that attract aligned clients — consistently and ethically.</p>
-          <div class="hero-buttons">
-            <a onclick="navigate('contact')" class="btn btn-primary">Book a Free 15-Min Strategy Call</a>
-            <a onclick="navigate('how')" class="btn btn-outline-light">See How It Works</a>
-          </div>
-        </div>
-        <div>
-          <div class="hero-panel">
-            <p class="panel-label">Our Three-Pillar System</p>
-            <div class="panel-item">
-              <div class="panel-num">1</div>
-              <div><h4>Authority Through Content</h4><p>Video-led content that positions you as the trusted expert in your niche.</p></div>
-            </div>
-            <div class="panel-item">
-              <div class="panel-num">2</div>
-              <div><h4>Visibility Through Local Search</h4><p>Optimized local presence so clients find you when they're ready to reach out.</p></div>
-            </div>
-            <div class="panel-item">
-              <div class="panel-num">3</div>
-              <div><h4>Conversion Through Trust</h4><p>Website structure and messaging designed around how people choose a therapist.</p></div>
-            </div>
-            <a onclick="navigate('contact')" class="panel-cta">Book a Free 15-Min Strategy Call</a>
-            <p class="panel-note">Real value. No bait-and-switch.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="trust-bar">
-      <div class="trust-bar-inner">
-        <div class="trust-item"><div class="trust-dot">✓</div>Built exclusively for mental health professionals</div>
-        <div class="trust-item"><div class="trust-dot">✓</div>HIPAA-conscious marketing strategies</div>
-        <div class="trust-item"><div class="trust-dot">✓</div>Ethical, never salesy</div>
-        <div class="trust-item"><div class="trust-dot">✓</div>Free strategy call — no commitment</div>
-      </div>
-    </div>
-  </section>
+  <div class="proof-bar"><div class="pb-inner">
+    <div class="pb-item"><div class="pb-check">✓</div>Built for licensed professionals</div>
+    <div class="pb-item"><div class="pb-check">✓</div>Confidentiality-first workflows</div>
+    <div class="pb-item"><div class="pb-check">✓</div>Clinician-approved content</div>
+    <div class="pb-item"><div class="pb-check">✓</div>Evidence-informed, never hype</div>
+  </div></div>
 
-  <!-- Problem -->
-  <section class="problem-section">
-    <div class="prob-inner">
-      <div>
-        <span class="label">The Problem</span>
-        <h2 class="section-title">Most therapists are invisible online — and it's not their fault.</h2>
-        <div class="problem-points">
-          <div class="prob-card"><div class="prob-icon">🔄</div><div><h4>Referral dependency is fragile</h4><p>Word-of-mouth is valuable but unpredictable. When referrals slow, so does your caseload — with no system to fall back on.</p></div></div>
-          <div class="prob-card"><div class="prob-icon">😟</div><div><h4>Marketing feels ethically uncomfortable</h4><p>Traditional marketing tactics clash with the therapeutic ethos. Self-promotion can feel inauthentic, even manipulative.</p></div></div>
-          <div class="prob-card"><div class="prob-icon">🌐</div><div><h4>Websites don't communicate real value</h4><p>Most therapy websites fail to convey warmth, expertise, or the specific approach that makes you the right fit.</p></div></div>
-          <div class="prob-card"><div class="prob-icon">📱</div><div><h4>Inconsistent or absent social presence</h4><p>Sporadic posting — or none at all — means the clients most aligned with your approach never find you.</p></div></div>
-          <div class="prob-card"><div class="prob-icon">🤷</div><div><h4>No clear path forward</h4><p>Without a system, marketing stays on the to-do list indefinitely. The uncertainty is its own source of stress.</p></div></div>
-        </div>
-      </div>
-      <div>
-        <div class="trust-callout">
-          <p class="tc-label">The Core Insight</p>
-          <h3>Therapy is built on trust. Your marketing should be too.</h3>
-          <p>People don't choose a therapist the way they choose a plumber. They read, they research, they sense whether someone is right for them long before making contact. Your online presence is that first conversation.</p>
-          <div class="trust-hr"></div>
-          <p class="trust-quote">"The goal isn't to convince anyone. It's to make sure the right people — the ones you can genuinely help — are able to find you."</p>
-        </div>
-      </div>
+  <section class="safe-section"><div class="safe-inner">
+    <div class="safe-header"><div><span class="label">How It Works</span><h2 class="section-title">The SAFE Method</h2></div><p class="section-sub">Our approach is structured around four principles designed for the ethical and practical realities of clinical practice marketing.</p></div>
+    <div class="safe-grid">
+      <div class="safe-card"><div class="safe-letter">S</div><h3>Standards-First</h3><p>Every piece of content is built within a confidentiality-safe framework. Boundaries make better marketing.</p></div>
+      <div class="safe-card"><div class="safe-letter">A</div><h3>Authority Through Education</h3><p>Position yourself as a credible voice by sharing genuine psychoeducation. No miracle claims. Just clear expertise.</p></div>
+      <div class="safe-card"><div class="safe-letter">F</div><h3>Fit-Focused Marketing</h3><p>Attract people genuinely aligned with your approach — and gently filter out those who aren't.</p></div>
+      <div class="safe-card"><div class="safe-letter">E</div><h3>Ease & Sustainability</h3><p>One blog post per month, repurposed into video clips and carousels. Minimal time from you, maximum consistency.</p></div>
     </div>
-  </section>
+  </div></section>
 
-  <!-- Approach -->
-  <section class="approach-section">
-    <div class="approach-inner">
-      <div class="approach-header">
-        <div>
-          <span class="label label-sage">Our Approach</span>
-          <h2 class="section-title-light">A system built on how trust actually works.</h2>
-        </div>
-        <p class="section-sub-light">We don't do generic social media management. Every piece of work at Rooted Reach is built around trust psychology, professional storytelling, and the specific journey someone takes before choosing a therapist.</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar p1"><div class="pillar-num">01</div><h3>Authority Through Content</h3><p>Video-driven content that showcases your thinking, your approach, and your personality — turning expertise into trust before anyone makes contact.</p></div>
-        <div class="pillar p2"><div class="pillar-num">02</div><h3>Visibility Through Local Search</h3><p>Optimized Google presence, directories, and city-specific content that puts you in front of people actively searching for a therapist in your area.</p></div>
-        <div class="pillar p3"><div class="pillar-num">03</div><h3>Conversion Through Trust</h3><p>Website structure and copywriting informed by how therapeutic relationships are actually formed — clarity, warmth, and the right call to action.</p></div>
-      </div>
-      <div class="founder-bar">
-        <div class="fb-icon">🎬</div>
-        <div>
-          <h4>Why a videographer founded a therapy marketing agency</h4>
-          <p>Our founder brings a background in professional video production, content systems, and the study of trust psychology and persuasion. The result is marketing that is never generic — built on deep understanding of how people form relationships with the practitioners they choose to work with.</p>
-        </div>
-      </div>
+  <section class="svc-preview"><div class="sp-inner">
+    <span class="label">Services</span><h2 class="section-title">Purpose-built for clinicians. Never generic.</h2><p class="section-sub">Each service is designed around the specific needs, ethical constraints, and communication style of licensed health professionals.</p>
+    <div class="sp-grid">
+      <div class="sp-card"><div class="sp-icon" style="background:var(--sage-pale)">🧭</div><h3>Strategy & Clinical Positioning</h3><p>Define your scope, ideal client, and boundary-safe messaging without ethical risk.</p><a onclick="go('services')" class="sp-link">Explore →</a></div>
+      <div class="sp-card"><div class="sp-icon" style="background:var(--clay-pale)">📝</div><h3>Content System & Calendar</h3><p>One monthly blog becomes 6–8 video clips and 6–8 carousel posts. Sustainable and structured.</p><a onclick="go('services')" class="sp-link">Explore →</a></div>
+      <div class="sp-card"><div class="sp-icon" style="background:var(--mist-pale)">🎨</div><h3>Copywriting & Visual Design</h3><p>Clinically literate copywriting paired with clean, professional design templates.</p><a onclick="go('services')" class="sp-link">Explore →</a></div>
+      <div class="sp-card"><div class="sp-icon" style="background:var(--sage-pale)">📱</div><h3>Social Media Management</h3><p>Scheduling, publishing, and maintaining your content calendar while you focus on clinical work.</p><a onclick="go('services')" class="sp-link">Explore →</a></div>
+      <div class="sp-card"><div class="sp-icon" style="background:var(--clay-pale)">🛡️</div><h3>Boundary Scripts & Intake CTAs</h3><p>DM response scripts and intake-friendly calls to action that maintain professional boundaries.</p><a onclick="go('services')" class="sp-link">Explore →</a></div>
     </div>
-  </section>
+  </div></section>
 
-  <!-- Services Overview -->
-  <section class="svc-overview">
-    <div class="svc-overview-inner">
-      <span class="label label-sage">Services</span>
-      <h2 class="section-title-light">Everything you need to grow — nothing you don't.</h2>
-      <div class="svc-grid">
-        <div class="svc-card flagship">
-          <div class="flagship-left">
-            <div class="svc-icon">🌳</div>
-            <span class="svc-sub-label">Full Growth Partnership</span>
-            <h3>The Complete Client Acquisition Engine</h3>
-            <p>All three services working together as one integrated system. Content, local visibility, and website optimization — designed to compound over time and deliver a predictable flow of aligned consultations.</p>
-            <a onclick="navigate('services')" class="svc-learn">Explore the Full Partnership →</a>
-          </div>
-          <div class="flagship-right">
-            <h5>What's included</h5>
-            <ul>
-              <li>Monthly content production & publishing</li>
-              <li>Short-form video clips & carousels</li>
-              <li>Google Business Profile optimization</li>
-              <li>Website rewrite & trust-based CTAs</li>
-              <li>Local keyword integration</li>
-              <li>Review & directory strategy</li>
-              <li>Monthly reporting & refinement</li>
-            </ul>
-          </div>
-        </div>
-        <div class="svc-card"><div class="svc-icon">🌿</div><span class="svc-sub-label">Service One</span><h3>Authority Engine</h3><p>A structured monthly content system — blogs, video clips, carousels, and captions — rooted in your expertise and built to establish long-term authority in your niche.</p><a onclick="navigate('services')" class="svc-learn">Learn More →</a></div>
-        <div class="svc-card"><div class="svc-icon">🌱</div><span class="svc-sub-label">Service Two</span><h3>Website Optimization</h3><p>Your website rewritten through the lens of trust psychology — so visitors understand who you are, who you help, and exactly how to take the next step.</p><a onclick="navigate('services')" class="svc-learn">Learn More →</a></div>
-        <div class="svc-card"><div class="svc-icon">📍</div><span class="svc-sub-label">Service Three</span><h3>Local Visibility Setup</h3><p>Optimized Google presence, schema markup, directory listings, and a review strategy that puts you at the top of local search when it matters most.</p><a onclick="navigate('services')" class="svc-learn">Learn More →</a></div>
-      </div>
+  <section class="diff-section"><div class="diff-inner">
+    <span class="label label-sage">What Makes Us Different</span><h2 style="font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--light-text);margin-bottom:0.85rem">This isn't generic marketing with a therapy label.</h2><p style="font-size:0.95rem;color:var(--on-dark-2);max-width:560px;line-height:1.78">We built Athenna specifically for clinicians because your profession deserves a marketing partner that understands the weight of what you do.</p>
+    <div class="diff-grid">
+      <div class="diff-card"><div class="diff-icon">🔒</div><div><h4>Confidentiality-safe workflow</h4><p>Boundary-safe storytelling, content disclaimers, risk-reduction review. We never use client stories or anything risking identification.</p></div></div>
+      <div class="diff-card"><div class="diff-icon">🗣️</div><div><h4>Clinical voice translation</h4><p>Convert clinical nuance into clear psychoeducation — without dumbing it down or adding influencer energy.</p></div></div>
+      <div class="diff-card"><div class="diff-icon">🎯</div><div><h4>Fit-focused, not volume-focused</h4><p>Attract aligned clients, reduce emotionally draining DMs, and support the boundaries you teach your clients to practice.</p></div></div>
+      <div class="diff-card"><div class="diff-icon">✍️</div><div><h4>Full approval workflow</h4><p>Nothing posts without your sign-off. Documentation, clinician review, and a privacy-first process throughout.</p></div></div>
+      <div class="diff-card"><div class="diff-icon">📊</div><div><h4>Evidence-respecting credibility</h4><p>"Evidence-informed," myth-busting with nuance, no miracle claims. We respect the complexity of your field.</p></div></div>
+      <div class="diff-card"><div class="diff-icon">🌿</div><div><h4>Sustainable, not performative</h4><p>One blog post powers an entire month. Designed for clinicians with full caseloads, not empty calendars.</p></div></div>
     </div>
-  </section>
+  </div></section>
 
-  <!-- Why -->
-  <section class="why-section">
-    <div class="why-inner">
-      <span class="label">Why Rooted Reach</span>
-      <h2 class="section-title">This isn't generic. It's built for you.</h2>
-      <div class="why-grid">
-        <div class="why-card"><div class="why-icon">🎬</div><h4>Professional Video Production</h4><p>Our founder is a working videographer. Your content is produced at a level that commands attention and communicates competence.</p></div>
-        <div class="why-card"><div class="why-icon">🧠</div><h4>Trust Psychology Applied</h4><p>We've studied how people make decisions about care. Everything from your homepage structure to your content topics is informed by that understanding.</p></div>
-        <div class="why-card"><div class="why-icon">⚙️</div><h4>Systems That Scale</h4><p>Structured workflows, junior editors, and quality control — so your marketing output is consistent and grows with you over time.</p></div>
-        <div class="why-card"><div class="why-icon">🎯</div><h4>Therapist-Only Focus</h4><p>We serve one niche. That means deep expertise in the ethics, language, and dynamics of mental health practice marketing.</p></div>
-        <div class="why-card"><div class="why-icon">🌿</div><h4>Ethical by Design</h4><p>No manipulative tactics. No false urgency. Marketing that aligns with the values of your profession and the integrity of your practice.</p></div>
-        <div class="why-card"><div class="why-icon">📈</div><h4>Long-Term Authority</h4><p>Unlike paid ads that stop the moment you pause, our content and visibility work builds a foundation that compounds over time.</p></div>
-      </div>
+  <section class="faq-section"><div class="faq-inner">
+    <div class="faq-header"><div><span class="label">Common Questions</span><h2 class="section-title">Questions clinicians ask before working with us.</h2></div><p class="section-sub">We understand the skepticism. These are the concerns we hear most often — and they're exactly the right questions to ask.</p></div>
+    <div class="faq-grid">
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How do you handle client confidentiality in content?<span class="faq-toggle">+</span></div><div class="faq-a">We never use client stories, case details, or anything that could risk identification. Content is built entirely from your professional expertise — psychoeducation, clinical insights, and your philosophical approach. We include content disclaimers where appropriate.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Will my content sound like me — or like a marketing agency?<span class="faq-toggle">+</span></div><div class="faq-a">Everything we produce is drawn from conversations with you. We translate, we don't replace. Nothing publishes without your review and explicit sign-off.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Is this appropriate for licensed professionals?<span class="faq-toggle">+</span></div><div class="faq-a">Athenna was built specifically for licensed clinicians. We understand scope of practice, ethical advertising guidelines, and the professional standards that govern your public communication.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">I'm uncomfortable with self-promotion. Is this still for me?<span class="faq-toggle">+</span></div><div class="faq-a">Most of our clients feel exactly that way. Our approach is education-led visibility — you share your expertise; we structure it so the right people can find it. It feels like teaching, not selling.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How much of my time does this require?<span class="faq-toggle">+</span></div><div class="faq-a">Minimal. One brainstorm session, one short video call, and a review cycle each month. We handle strategy, writing, design, editing, and scheduling.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Will you make claims I'm not comfortable with?<span class="faq-toggle">+</span></div><div class="faq-a">Never. We use evidence-informed language, nuanced phrasing, and autonomy-supportive copy: "You can," "Consider," "If it fits." Nothing aggressive or manipulative.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What platforms do you work with?<span class="faq-toggle">+</span></div><div class="faq-a">Primarily Instagram, LinkedIn, and Facebook. We can discuss other platforms during your discovery call based on where your audience is most active.</div></div>
+      <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I pause or adjust if my caseload changes?<span class="faq-toggle">+</span></div><div class="faq-a">Absolutely. We build flexibility into every engagement. Sustainability means adapting to real clinical life, not forcing a rigid marketing calendar.</div></div>
     </div>
-  </section>
+  </div></section>
 
-  <!-- Audit CTA -->
-  <section class="audit-section">
-    <div class="audit-inner">
-      <div>
-        <span class="label label-sage">Book Your Audit</span>
-        <h2 class="section-title-light">Start with clarity.</h2>
-        <p style="font-size:1rem;color:var(--on-dark-2);line-height:1.8;margin-bottom:2rem;max-width:480px;">The Website Visibility Audit gives you a detailed, expert assessment of exactly where your online presence stands — and what to do about it. Designed to provide genuine value, not a sales pitch.</p>
-        <a onclick="navigate('contact')" class="btn btn-primary" style="margin-right:1rem;">Book a Free 15-Min Strategy Call</a>
-        <a onclick="navigate('contact')" class="btn btn-outline-light">Free Strategy Call</a>
-      </div>
-      <div class="audit-card">
-        <div class="audit-price">
-          <span class="audit-amount">$99</span>
-          <span class="audit-desc">Website Visibility Audit</span>
-        </div>
-        <h3>What you receive:</h3>
-        <ul class="audit-list">
-          <li>Homepage clarity and messaging analysis</li>
-          <li>Trust signal review — what's working and what's missing</li>
-          <li>CTA structure assessment</li>
-          <li>Local visibility and Google Business check</li>
-          <li>SEO structure overview</li>
-          <li>Loom video walkthrough of all findings</li>
-        </ul>
-        <p class="audit-note">Delivered within 5 business days. No fluff — just actionable insight.</p>
-      </div>
-    </div>
-  </section>
-
-</div><!-- /home -->
-
-<!-- ═══════════════════════════════════════
-     HOW IT WORKS
-═══════════════════════════════════════ -->
-<div id="page-how" class="page">
-  <div class="page-hero">
-    <span class="label label-sage">Process</span>
-    <h1>A clear system from first conversation to consistent growth.</h1>
-    <p>Everything at Rooted Reach runs on structured, repeatable workflows — so your marketing is never dependent on inspiration or guesswork.</p>
-  </div>
-  <section class="steps-section">
-    <div class="steps-inner">
-      <div class="step-block">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <p class="step-tag">Month One</p><h3>Audit & Strategy</h3>
-          <p>We begin with a comprehensive assessment of your current online presence — website, local search, content, and competitive landscape. From there we build a custom strategy anchored to your niche, location, and the clients you most want to work with.</p>
-          <div class="step-detail"><h5>What happens:</h5><ul><li>Website Visibility Audit (if not completed)</li><li>Competitor landscape review</li><li>Ideal client profile development</li><li>Content theme and keyword mapping</li><li>Strategy document delivery and review call</li></ul></div>
-        </div>
-      </div>
-      <div class="step-block">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <p class="step-tag">Month One–Two</p><h3>Authority Build — Content Capture & Production</h3>
-          <p>We conduct a structured content capture session — interview-style, guided by our content team — to extract the insights and clinical wisdom that will form your content library. Our production team transforms this into video clips, blog posts, carousels, and captions ready for publishing.</p>
-          <div class="step-detail"><h5>What happens:</h5><ul><li>Content capture session (remote or in-person)</li><li>Short-form video editing and captioning</li><li>Blog post development from interview content</li><li>Carousel and graphic design</li><li>Content calendar finalization and scheduling</li></ul></div>
-        </div>
-      </div>
-      <div class="step-block">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <p class="step-tag">Month Two</p><h3>Visibility Optimization</h3>
-          <p>In parallel with content production, we optimize your digital footprint for local search — Google Business Profile, directory submissions, schema markup, and city-specific content. The goal is to ensure that when someone in your city searches for a therapist, you appear — and appear credibly.</p>
-          <div class="step-detail"><h5>What happens:</h5><ul><li>Google Business Profile full optimization</li><li>Review generation system setup</li><li>Directory submissions and NAP consistency audit</li><li>Schema markup implementation</li><li>City and neighborhood keyword integration</li></ul></div>
-        </div>
-      </div>
-      <div class="step-block">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <p class="step-tag">Ongoing</p><h3>Growth & Refinement</h3>
-          <p>After the foundation is built, we shift into a rhythm of consistent output and continuous improvement. Monthly content production, performance tracking, and strategy refinement ensure your results compound over time.</p>
-          <div class="step-detail"><h5>Each month:</h5><ul><li>New content capture and publishing</li><li>Performance metrics review</li><li>Local visibility monitoring and updates</li><li>Content strategy refinement from engagement data</li><li>Monthly report and strategy call</li></ul></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="systems-bar">
-    <div class="systems-bar-inner">
-      <h3>Built on systems, not spontaneity.</h3>
-      <p>Rooted Reach operates with structured internal workflows and junior editors — meaning your content pipeline doesn't stall when life gets busy. Quality control processes ensure everything published under your name meets the standard your practice deserves.</p>
-    </div>
-  </div>
-  <section style="background:var(--cream);padding:80px 5%;text-align:center;">
-    <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);color:var(--ink-lite);margin-bottom:1rem;">Ready to see where you stand?</h2>
-    <p style="font-size:0.95rem;color:var(--sub);max-width:500px;margin:0 auto 2rem;line-height:1.8;">The Website Visibility Audit is the clearest way to start. You'll know exactly what's holding you back and what to prioritize first.</p>
-    <a onclick="navigate('contact')" class="btn btn-primary">Book a Free Strategy Call</a>
-  </section>
+  <section class="cta-section"><div class="cta-inner">
+    <span class="label" style="justify-content:center">Get Started</span>
+    <h2>See if this approach fits your practice.</h2>
+    <p>A discovery call is a 20-minute conversation about your practice, your goals, and whether our approach aligns with how you want to grow. No pressure, no pitch — just clarity.</p>
+    <a onclick="go('contact')" class="btn btn-clay" style="margin-right:0.75rem">Schedule a Discovery Call</a><a onclick="go('process')" class="btn btn-outline">Learn About Our Ethics-First Process</a>
+  </div></section>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SERVICES
-═══════════════════════════════════════ -->
+<!-- SERVICES -->
 <div id="page-services" class="page">
-  <div class="page-hero">
-    <span class="label label-sage">Services</span>
-    <h1>Purpose-built for therapy practices.</h1>
-    <p>Every service is designed around one question: what does it take for the right client to trust you enough to reach out?</p>
-  </div>
+  <section class="hero" style="min-height:auto;padding:145px 5% 80px"><div style="max-width:1140px;margin:0 auto;text-align:center">
+    <span class="label" style="justify-content:center">Services</span>
+    <h1 style="font-size:clamp(2.2rem,4vw,3.2rem);color:var(--slate);max-width:720px;margin:0 auto 1.25rem">Content marketing designed around the ethics and realities of clinical practice.</h1>
+    <p style="font-size:1rem;color:var(--sub);max-width:560px;margin:0 auto;line-height:1.8">Each service is clinician-safe, sustainable, and grounded in how trust actually works. No hype. No shortcuts.</p>
+  </div></section>
 
-  <section class="sd-section dark">
-    <div class="sd-inner">
-      <div class="sd-left">
-        <div class="sd-icon">🌿</div>
-        <span class="label label-sage">Service One</span>
-        <h2>Authority Engine</h2>
-        <p>Content marketing for therapists is not about posting motivational quotes. It's about demonstrating expertise, articulating your approach, and giving potential clients the information they need to decide you're the right fit — before they ever reach out.</p>
-        <p>The Authority Engine is a structured monthly content system built around your voice and expertise. Our founder's background in professional video production means the quality of your content reflects the quality of your practice.</p>
-        <div class="sd-highlight">"The therapists who grow fastest aren't the loudest — they're the ones who consistently show up and demonstrate genuine understanding of the problems their clients face."</div>
-      </div>
-      <div><div class="sd-right-box"><h4>What's included</h4><ul><li>Monthly interview-driven content capture</li><li>Short-form video clips (IG, TikTok, Facebook)</li><li>Carousel posts with branded design</li><li>Caption writing with ethical CTAs</li><li>Monthly SEO-optimized blog post</li><li>Content scheduling and publishing</li><li>Internal linking for domain authority</li><li>Monthly performance report</li></ul></div></div>
-    </div>
-  </section>
+  <section class="svc-detail white"><div class="sd-inner"><div class="sd-left"><div class="sd-icon">🧭</div><span class="label">Service One</span><h2>Strategy & Clinical Positioning</h2><p>Before content is created, we clarify the foundations: who you serve, how you want to be perceived, and what messaging feels congruent with your clinical identity and ethical boundaries.</p><div class="sd-highlight">"The goal isn't to be visible to everyone. It's to be clearly, accurately visible to the people you can genuinely help."</div></div><div><div class="sd-box"><h4>Deliverables</h4><ul><li>Ideal client profile and fit-focused messaging guide</li><li>Scope-of-practice content boundary documentation</li><li>Clinical voice style guide</li><li>Topic framework mapped to your expertise</li><li>Messaging do's and don'ts tailored to your licensure</li></ul></div></div></div></section>
 
-  <section class="sd-section mid">
-    <div class="sd-inner rev">
-      <div class="sd-left">
-        <div class="sd-icon">🌱</div>
-        <span class="label">Service Two</span>
-        <h2>Website Optimization</h2>
-        <p>Most therapy websites make the same mistakes: vague headlines, stock photos, a generic about page, and a contact form buried at the bottom. The result is a site that looks fine but doesn't convert.</p>
-        <p>We rewrite and restructure your website through the lens of trust psychology — using an understanding of how people actually make decisions about which therapist to choose. Every page, every headline, every call to action is intentional.</p>
-        <div class="sd-highlight">"Before someone calls you, they've already decided whether they trust you. Your website is where that decision is made."</div>
-      </div>
-      <div><div class="sd-right-box"><h4>What's included</h4><ul><li>Homepage messaging rewrite</li><li>Service and specialty page expansion</li><li>Trust-centered copywriting throughout</li><li>CTA structure and placement optimization</li><li>FAQ page development</li><li>Internal linking architecture</li><li>Local keyword integration</li><li>Basic on-page SEO implementation</li></ul></div></div>
-    </div>
-  </section>
+  <section class="svc-detail cream"><div class="sd-inner rev"><div class="sd-left"><div class="sd-icon">📝</div><span class="label">Service Two</span><h2>Content System & Calendar</h2><p>One thoughtful blog post each month becomes the foundation for your entire content strategy — including 6–8 short-form video clips and 6–8 text carousel posts. One piece of writing powers an entire month.</p><p>We handle extraction, writing, design, and scheduling. You brainstorm a topic, share your perspective, and we build everything from there.</p><div class="sd-highlight">"This system is designed around real clinical schedules — not the assumption that you have hours to spend on marketing."</div></div><div><div class="sd-box"><h4>Monthly output</h4><ul><li>1 SEO-optimized blog post (800–1,000 words)</li><li>6–8 short-form video clips (edited, captioned)</li><li>6–8 branded carousel posts</li><li>Captions with ethical CTAs</li><li>Content calendar with scheduling</li><li>Internal linking for SEO benefit</li><li>Monthly review and approval cycle</li></ul></div></div></div></section>
 
-  <section class="sd-section light">
-    <div class="sd-inner">
-      <div class="sd-left">
-        <div class="sd-icon">📍</div>
-        <span class="label">Service Three</span>
-        <h2>Local Visibility Setup</h2>
-        <p>General SEO and local SEO are not the same thing. A therapist doesn't need to rank nationally — they need to appear at the top of results when someone in their city types "anxiety therapist" or "therapist accepting new clients near me."</p>
-        <p>We build and optimize every component of your local search presence — from your Google Business Profile to directory listings to the schema markup that tells search engines exactly who you are and where you practice.</p>
-        <div class="sd-highlight">"The difference between ranking third and ranking first locally can mean dozens of additional inquiries per month. The gap is usually smaller than people think."</div>
-      </div>
-      <div><div class="sd-right-box"><h4>What's included</h4><ul><li>Google Business Profile full optimization</li><li>Review generation strategy and templates</li><li>Directory submissions (Psychology Today, etc.)</li><li>NAP consistency audit across web</li><li>Local schema markup implementation</li><li>City and neighborhood keyword integration</li><li>Google Maps ranking strategy</li><li>Local visibility monitoring report</li></ul></div></div>
-    </div>
-  </section>
+  <section class="svc-detail white"><div class="sd-inner"><div class="sd-left"><div class="sd-icon">🎨</div><span class="label">Service Three</span><h2>Copywriting & Visual Design</h2><p>Clinically literate copywriting paired with clean, professional design templates. Your expertise, translated into content that feels like you — not like an ad.</p><div class="sd-highlight">"Your content should reflect the same care, precision, and warmth that your clients experience in your practice."</div></div><div><div class="sd-box"><h4>What's included</h4><ul><li>Psychoeducational carousel copywriting</li><li>Video script development and talking points</li><li>Caption writing with autonomy-supportive CTAs</li><li>Branded design templates</li><li>Content disclaimer language development</li><li>Tone-of-voice consistency review</li></ul></div></div></div></section>
 
-  <section class="flagship-section">
-    <div class="flagship-inner">
-      <span class="label label-gold">Full Growth Partnership</span>
-      <h2>🌳 The Complete Client Acquisition Engine</h2>
-      <p class="section-sub-light" style="margin-bottom:3rem;">All three services, integrated into one system. Content builds authority, local search builds visibility, and your website converts visitors into consultations.</p>
-      <div class="fs-grid">
-        <div class="fs-card"><div class="fs-icon">📅</div><h4>Predictable Consultations</h4><p>A consistent system means consistent results. You'll stop wondering where your next client is coming from.</p></div>
-        <div class="fs-card"><div class="fs-icon">📈</div><h4>Compounding Authority</h4><p>Content and SEO are long-game assets. Every month builds on the last — unlike ads that disappear the moment you stop paying.</p></div>
-        <div class="fs-card"><div class="fs-icon">🌿</div><h4>Ethical Growth</h4><p>Every strategy is aligned with the values of your profession. No manipulative tactics, no false urgency, no compromises.</p></div>
-      </div>
-      <div style="text-align:center;margin-top:3rem;">
-        <a onclick="navigate('contact')" class="btn btn-primary" style="margin-right:1rem;">Book a Strategy Call</a>
-        <a onclick="navigate('contact')" class="btn btn-outline-light">Book a Free Strategy Call</a>
-      </div>
-    </div>
-  </section>
+  <section class="svc-detail cream"><div class="sd-inner rev"><div class="sd-left"><div class="sd-icon">🛡️</div><span class="label">Service Four</span><h2>Boundary Scripts & Intake-Friendly CTAs</h2><p>DM response scripts that maintain professional boundaries while remaining warm. Intake-friendly calls to action that guide people toward appropriate next steps, not impulsive decisions.</p></div><div><div class="sd-box"><h4>What's included</h4><ul><li>DM response templates (scope-appropriate)</li><li>Boundary-safe auto-reply suggestions</li><li>Intake-friendly CTA language library</li><li>Comment response guidelines</li><li>Referral language for out-of-scope inquiries</li><li>"When to disengage" professional scripts</li></ul></div></div></div></section>
+
+  <section class="addons-section"><div class="addons-inner"><h3>Optional add-ons</h3><p>Additional services based on what fits your practice.</p><div class="addon-tags"><span class="addon-tag">Website copy refresh</span><span class="addon-tag">Lead magnet development</span><span class="addon-tag">Email nurture sequence</span><span class="addon-tag">SEO keyword strategy</span><span class="addon-tag">Platform audit</span><span class="addon-tag">Referral-ready messaging</span></div></div></section>
+
+  <section class="cta-section"><div class="cta-inner"><h2>Explore a plan that fits your practice.</h2><p>Every engagement begins with a conversation about your goals, your boundaries, and what sustainable growth looks like for you.</p><a onclick="go('contact')" class="btn btn-clay">Schedule a Discovery Call</a></div></section>
 </div>
 
-<!-- ═══════════════════════════════════════
-     FOR THERAPISTS
-═══════════════════════════════════════ -->
-<div id="page-therapists" class="page">
-  <div class="therapist-hero">
-    <div class="th-inner">
-      <div>
-        <span class="label">For Therapists</span>
-        <h1>You became a therapist to help people. Not to figure out Instagram.</h1>
-        <p>Marketing is not something they taught in grad school. And most of what passes for marketing advice feels completely at odds with the ethos of your profession. You're not alone in that discomfort.</p>
-        <p>Rooted Reach was built specifically for this — for practitioners who want to grow, and who need a strategic partner who deeply understands what that has to look like for a therapist.</p>
-        <a onclick="navigate('contact')" class="btn btn-primary" style="margin-top:0.5rem;">Let's Talk</a>
-      </div>
-      <div>
-        <div class="th-panel">
-          <h3>We hear this all the time.</h3>
-          <div class="concern"><div class="concern-icon">😟</div><div><h5>"Marketing feels gross and self-promotional."</h5><p>There's a version of marketing that respects your ethics completely. We help you build that.</p></div></div>
-          <div class="concern"><div class="concern-icon">🤔</div><div><h5>"I don't know what to post or say."</h5><p>We handle strategy, creation, and publishing. You show up for a guided conversation once a month.</p></div></div>
-          <div class="concern"><div class="concern-icon">😓</div><div><h5>"I'm already burned out — I can't add marketing."</h5><p>That's exactly why we built a system that runs itself. Your involvement is minimal by design.</p></div></div>
-          <div class="concern"><div class="concern-icon">🎯</div><div><h5>"I want clients who are a genuine fit, not just anyone."</h5><p>The right content attracts the right people — and filters out mismatches before they reach you.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <section class="ethics-section">
-    <div class="ethics-inner">
-      <span class="label">Our Commitment</span>
-      <h2 class="section-title">Ethical marketing isn't a constraint.<br>It's the strategy.</h2>
-      <p class="section-sub">The most effective marketing for therapists is also the most ethical. Trust-based, education-first content works precisely because it respects potential clients as intelligent adults.</p>
-      <div class="ethics-grid">
-        <div class="ethics-card"><div class="ethics-icon">🧭</div><div><h4>No Manipulative Tactics</h4><p>We don't use false urgency, manufactured scarcity, or pressure-based persuasion. Everything is honest and in alignment with your profession.</p></div></div>
-        <div class="ethics-card"><div class="ethics-icon">🔒</div><div><h4>HIPAA-Conscious by Default</h4><p>Every content strategy is developed with an awareness of clinical confidentiality requirements. We help you share knowledge without crossing professional boundaries.</p></div></div>
-        <div class="ethics-card"><div class="ethics-icon">🤝</div><div><h4>Authentic Voice, Always</h4><p>We don't write content that sounds like someone else. Every piece is built from your actual thinking and clinical wisdom — then shaped for reach.</p></div></div>
-        <div class="ethics-card"><div class="ethics-icon">💡</div><div><h4>Education First</h4><p>The content we produce is genuinely useful to the people who read it. It builds trust because it provides real value — not because it's designed to manipulate.</p></div></div>
-      </div>
-    </div>
-  </section>
-  <div class="promise-section">
-    <div class="promise-inner">
-      <h2>Your practice, grown on your terms.</h2>
-      <p>We're not interested in inflating your numbers with the wrong clients or building a marketing presence that doesn't reflect who you actually are. The goal is a sustainable, thriving practice filled with clients you can genuinely help.</p>
-      <a onclick="navigate('contact')" class="btn btn-primary" style="margin-right:1rem;">Book a Free Consult</a>
-      <a onclick="navigate('contact')" class="btn btn-outline-light">Book a Free Strategy Call</a>
-    </div>
-  </div>
+<!-- PROCESS & ETHICS -->
+<div id="page-process" class="page">
+  <section class="process-hero"><div class="ph-inner"><div>
+    <span class="label">Process & Ethics</span><h1>Built around the boundaries that matter to you.</h1>
+    <p>For licensed professionals, marketing isn't just about visibility — it's about maintaining the trust, integrity, and ethical standards your profession requires.</p>
+    <p>Our entire process is designed with these constraints as the starting point, not an afterthought.</p>
+    <a onclick="go('contact')" class="btn btn-clay" style="margin-top:0.5rem">Get a Clear Next Step</a>
+  </div><div>
+    <div class="boundary-panel"><p class="bp-title">Our content commitments</p><div class="bp-row">
+      <div class="bp-col bp-will"><h4>What we will do</h4><ul><li>Use only your professional expertise and perspectives</li><li>Include appropriate content disclaimers</li><li>Maintain boundary-safe storytelling at all times</li><li>Require your explicit approval before posting</li><li>Use evidence-informed language with nuance</li><li>Respect your scope of practice in all content</li></ul></div>
+      <div class="bp-col bp-wont"><h4>What we won't do</h4><ul><li>Use client stories or anything risking identification</li><li>Make guarantees or transformation promises</li><li>Use pain-point exploitation or pressure tactics</li><li>Post anything without your sign-off</li><li>Use "hustle culture" or hype-driven language</li><li>Oversimplify clinical concepts for engagement</li></ul></div>
+    </div></div>
+  </div></div></section>
+
+  <section class="workflow-section"><div class="wf-inner">
+    <span class="label" style="display:block;text-align:center">The Monthly Workflow</span>
+    <h2 class="section-title" style="text-align:center;margin-bottom:0.5rem">Eight steps. One system. Full clinician control.</h2>
+    <p style="text-align:center;font-size:0.92rem;color:var(--sub);max-width:540px;margin:0 auto 3rem;line-height:1.78">A structured, repeatable process designed to minimize your time while maximizing quality and ethical alignment.</p>
+    <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><h3>Brainstorm Blog Topics</h3><p>Suggest a few potential topics — typically the questions you hear most in practice, common misconceptions, or practical insights your audience could benefit from.</p></div></div>
+    <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><h3>Write the Monthly Blog</h3><p>We produce one 800–1,000 word blog post. Simply share bullet points or an outline, and we'll craft it into a polished post that sounds like you.</p></div></div>
+    <div class="wf-step"><div class="wf-num">3</div><div class="wf-content"><h3>Extract Social Media Content</h3><p>From the blog, we identify key ideas that translate into social formats: 6–8 short-form video topics and 6–8 text carousel posts.</p></div></div>
+    <div class="wf-step"><div class="wf-num">4</div><div class="wf-content"><h3>Review and Approval</h3><p>You receive the full list of extracted content ideas. Approve concepts, refine language, add context. Your professional voice always comes first.</p></div></div>
+    <div class="wf-step"><div class="wf-num">5</div><div class="wf-content"><h3>Carousel Content Creation</h3><p>We design branded carousel posts — clean, professional, visually consistent with your identity.</p></div></div>
+    <div class="wf-step"><div class="wf-num">6</div><div class="wf-content"><h3>Record Short-Form Video</h3><p>A brief Zoom recording session. We guide the conversation with targeted questions — keeping content natural, conversational, and authentic.</p></div></div>
+    <div class="wf-step"><div class="wf-num">7</div><div class="wf-content"><h3>Edit the Video Content</h3><p>We edit recordings into individual short-form clips. Each focuses on one clear concept, captioned and formatted for social platforms.</p></div></div>
+    <div class="wf-step"><div class="wf-num">8</div><div class="wf-content"><h3>Schedule and Publish</h3><p>Content is scheduled to publish gradually throughout the month — consistent presence without requiring ongoing time from you.</p></div></div>
+  </div></section>
+
+  <section class="disclaimers-section"><div class="disc-inner">
+    <h2>Suggested content disclaimers</h2><p class="disc-sub">We help develop appropriate disclaimers for educational content. Here are examples of language we build into your system.</p>
+    <div class="disc-card"><h4>General educational content</h4><p>"This content is for educational purposes and is not a substitute for professional mental health treatment. If you're in crisis, please contact your local emergency services or crisis line."</p></div>
+    <div class="disc-card"><h4>Psychoeducational posts</h4><p>"This information is general in nature and may not apply to your specific situation. Consider consulting with a licensed professional for personalized guidance."</p></div>
+    <div class="disc-card"><h4>Practice-specific content</h4><p>"The perspectives shared here reflect [Clinician Name]'s professional approach and are not intended as clinical advice for any individual's specific circumstances."</p></div>
+  </div></section>
+
+  <section class="cta-section"><div class="cta-inner"><h2>Questions about our process?</h2><p>We're happy to walk you through how we'd approach your specific practice, specialty, and ethical considerations.</p><a onclick="go('contact')" class="btn btn-clay">Schedule a Conversation</a></div></section>
 </div>
 
-<!-- ═══════════════════════════════════════
-     ABOUT
-═══════════════════════════════════════ -->
+<!-- ABOUT -->
 <div id="page-about" class="page">
-  <div class="about-hero">
-    <div class="about-inner">
-      <div>
-        <span class="label">About</span>
-        <h1>This isn't a mass agency. It's a specialized system built from the inside out.</h1>
-        <p>Rooted Reach exists because most marketing agencies don't understand therapists — and most therapists don't have a trustworthy place to turn when they need to grow.</p>
-        <p>Our founder built this agency from an unusual combination: professional video production, content systems experience, deep study of trust psychology and persuasion, and a genuine fascination with how therapeutic relationships are formed.</p>
-        <p>The result is a methodology that is rigorously strategic, ethically grounded, and specifically designed for the realities of private practice.</p>
-      </div>
-      <div>
-        <div class="founder-card">
-          <div class="founder-avatar">🎬</div>
-          <h3>Founder, Rooted Reach</h3>
-          <p class="founder-title">Videographer · Content Systems Strategist · Trust Psychology Student</p>
-          <ul class="cred-list">
-            <li><span class="cred-icon">🎥</span>Professional videographer with production expertise</li>
-            <li><span class="cred-icon">⚙️</span>Experienced in scalable content systems and workflows</li>
-            <li><span class="cred-icon">🧠</span>Studied psychology, trust dynamics, ethical persuasion</li>
-            <li><span class="cred-icon">🤝</span>Deeply versed in how therapeutic relationships are formed</li>
-            <li><span class="cred-icon">🌿</span>Committed exclusively to mental health professionals</li>
-          </ul>
-        </div>
-      </div>
+  <section class="about-hero"><div class="ab-inner"><div>
+    <span class="label">About Athenna</span><h1>We built this agency because clinicians deserve better than generic marketing.</h1>
+    <p>Most agencies don't understand that a compelling testimonial might violate confidentiality, that "transformation stories" can be ethically problematic, or that "pain-point" copy can feel exploitative to someone trained in therapeutic communication.</p>
+    <p>Athenna exists to bridge that gap — a content marketing agency that speaks your language, respects your boundaries, and builds visibility systems that feel congruent with your professional identity.</p>
+  </div><div>
+    <div class="founder-card"><h3>Founder, Athenna Agency</h3><p class="founder-title">Content Strategist · Clinical Marketing Specialist · Videographer</p>
+      <ul class="cred-list">
+        <li>Professional background in video production and content systems</li>
+        <li>Studied trust psychology, ethical persuasion, and therapeutic communication</li>
+        <li>Experienced translating clinical expertise into boundary-safe content</li>
+        <li>Deep understanding of licensing constraints and ethical marketing guidelines</li>
+        <li>Committed exclusively to serving licensed health professionals</li>
+      </ul>
     </div>
-  </div>
-  <section class="values-section">
-    <div class="values-inner">
-      <span class="label">What We Stand For</span>
-      <h2 class="section-title">Principles, not just promises.</h2>
-      <div class="values-grid">
-        <div class="value-card"><div class="value-num">01</div><h4>Specificity Over Scale</h4><p>We work with a limited number of clients at any given time — because depth of service and genuine attention cannot coexist with volume.</p></div>
-        <div class="value-card"><div class="value-num">02</div><h4>Systems Over Spontaneity</h4><p>Great marketing doesn't happen when inspiration strikes. It happens through structured, repeatable processes that produce consistent output.</p></div>
-        <div class="value-card"><div class="value-num">03</div><h4>Trust as Foundation</h4><p>Trust is not a marketing tactic — it's the entire point. Every strategy and every piece of content is evaluated first by whether it builds genuine trust.</p></div>
-        <div class="value-card"><div class="value-num">04</div><h4>Production Quality Matters</h4><p>The quality of your content signals the quality of your practice. We hold our output to the standard of a professional production company.</p></div>
-        <div class="value-card"><div class="value-num">05</div><h4>Congruence With Your Profession</h4><p>If a strategy wouldn't pass the ethical review of a clinical supervisor, we don't use it. Our marketing is designed to strengthen your professional identity.</p></div>
-        <div class="value-card"><div class="value-num">06</div><h4>Long-Term Thinking</h4><p>We're not interested in quick wins that don't last. The assets we build — content, search authority, local presence — grow in value month after month.</p></div>
-      </div>
+  </div></div></section>
+
+  <section class="values-section"><div class="val-inner">
+    <span class="label">Our Values</span><h2 class="section-title">The principles behind every decision we make.</h2>
+    <div class="val-grid">
+      <div class="val-card"><div class="val-icon">🔒</div><h4>Integrity</h4><p>If we wouldn't be comfortable explaining our approach to a licensing board, we don't use it.</p></div>
+      <div class="val-card"><div class="val-icon">🧭</div><h4>Boundaries</h4><p>Good marketing for clinicians is boundaried marketing. We build systems that protect your professional relationships.</p></div>
+      <div class="val-card"><div class="val-icon">💡</div><h4>Clarity</h4><p>Clear communication — not clever marketing — is what builds genuine trust.</p></div>
+      <div class="val-card"><div class="val-icon">🌿</div><h4>Sustainability</h4><p>Systems that work within your real clinical schedule, not plans that assume 10 hours a week for content.</p></div>
     </div>
-  </section>
-  <div class="mission-section">
-    <div class="mission-inner">
-      <h2>Our mission is simple.</h2>
-      <p>Make it possible for every therapist who is doing excellent work to be found by the clients who need them most. Not through manipulation or noise, but through honest visibility and genuine connection — built on a foundation of trust that mirrors the work you do every day.</p>
+  </div></section>
+
+  <section class="clinician-section"><div class="clin-inner">
+    <h2>"We speak clinician."</h2><p>Here's what that looks like in practice.</p>
+    <div class="clin-grid">
+      <div class="clin-card"><h4>Nuance matters</h4><p>We know the difference between "evidence-based" and "evidence-informed" — and why it matters in your content.</p></div>
+      <div class="clin-card"><h4>Scope is sacred</h4><p>We won't write content that stretches beyond your licensure, training, or area of competence.</p></div>
+      <div class="clin-card"><h4>Boundaries are a feature</h4><p>We treat ethical constraints as the framework that makes your marketing credible, not obstacles to work around.</p></div>
     </div>
-  </div>
+  </div></section>
+
+  <section class="cta-section" style="background:var(--slate-deep)"><div class="cta-inner">
+    <h2 style="color:var(--light-text)">Interested in learning more?</h2><p style="color:var(--on-dark-2)">We'd welcome a conversation about your practice and whether our approach aligns with your goals.</p>
+    <a onclick="go('contact')" class="btn btn-clay" style="margin-right:0.75rem">Schedule a Discovery Call</a><a onclick="go('process')" class="btn btn-outline-light">See Our Full Process</a>
+  </div></section>
 </div>
 
-<!-- ═══════════════════════════════════════
-     CASE STUDIES
-═══════════════════════════════════════ -->
-<div id="page-cases" class="page">
-  <div class="page-hero">
-    <span class="label label-sage">Results</span>
-    <h1>What ethical, strategic marketing looks like in practice.</h1>
-    <p>Real outcomes from independent therapists and small group practices who partnered with Rooted Reach.</p>
-  </div>
-  <section class="cases-section">
-    <div class="cases-inner">
-      <div class="case-card">
-        <div class="case-before"><span class="placeholder-badge">Placeholder · Coming Soon</span><span class="case-lbl">Before</span><h3>Private Practice, Anxiety Specialist</h3><p>A solo therapist with a strong clinical reputation but near-zero online presence. Relied entirely on psychiatrist referrals, which had begun to slow. Website was three years old, with generic copy and no local SEO.</p></div>
-        <div class="case-after"><span class="case-lbl">After</span><h3>Fully Booked in 4 Months</h3><p>Following website optimization, Google Business Profile setup, and a monthly content system, organic inquiries increased to 8–10 per month within 16 weeks. Caseload reached full capacity without relying on referrals.</p><div class="case-metric"><span class="metric-num">4×</span><span class="metric-desc">increase in monthly consultation inquiries</span></div></div>
-      </div>
-      <div class="case-card">
-        <div class="case-before"><span class="placeholder-badge">Placeholder · Coming Soon</span><span class="case-lbl">Before</span><h3>Group Practice, Couples Therapy</h3><p>A two-therapist group practice with inconsistent social media, a functional but unclear website, and low Google visibility despite being in a competitive market.</p></div>
-        <div class="case-after"><span class="case-lbl">After</span><h3>Page One Local Rankings + Consistent Inquiries</h3><p>Local visibility optimization combined with a monthly content system produced first-page Google Business rankings for three target keywords within 90 days.</p><div class="case-metric"><span class="metric-num">#1</span><span class="metric-desc">local ranking for "couples therapist [city]"</span></div></div>
-      </div>
-      <div class="case-card">
-        <div class="case-before"><span class="placeholder-badge">Placeholder · Coming Soon</span><span class="case-lbl">Before</span><h3>Solo Practice, Trauma & EMDR</h3><p>An experienced trauma therapist with a highly specialized approach and no effective way to communicate it online. Psychology Today profile was the only digital presence.</p></div>
-        <div class="case-after"><span class="case-lbl">After</span><h3>Established as the Local EMDR Authority</h3><p>A content strategy built around EMDR education positioned this therapist as a recognized local expert. Specialty pages and consistent blogging established search authority for niche keywords.</p><div class="case-metric"><span class="metric-num">340%</span><span class="metric-desc">increase in organic website traffic over 6 months</span></div></div>
-      </div>
-      <div class="case-invite">
-        <h3>Your case study goes here.</h3>
-        <p>We're actively building our client portfolio. If you're ready to grow and want to be one of our first documented success stories, we'd love to talk.</p>
-        <a onclick="navigate('contact')" class="btn btn-primary">Book a Conversation</a>
-      </div>
-    </div>
-  </section>
+<!-- RESOURCES -->
+<div id="page-resources" class="page">
+  <section class="resources-hero"><div class="rh-inner">
+    <span class="label" style="justify-content:center">Insights</span><h1>Resources for clinicians navigating the online world.</h1>
+    <p>Practical, ethical guidance on building an online presence that reflects your professional values. No hype, no hacks — just clear, considered information.</p>
+  </div></section>
+  <div class="cat-bar"><div class="cat-inner">
+    <span class="cat-tag active">All</span><span class="cat-tag">Ethical Marketing</span><span class="cat-tag">Content Ideas</span><span class="cat-tag">Boundary-Safe Social</span><span class="cat-tag">Practice Growth</span><span class="cat-tag">Referral Messaging</span>
+  </div></div>
+  <section class="articles-section"><div class="art-inner"><div class="art-grid">
+    <div class="art-card"><div class="art-cat">Ethical Marketing</div><h3>The Clinician's Guide to Ethical Social Media: What's Appropriate and What's Not</h3><p>A framework for navigating ethical gray areas of online content as a licensed professional.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Content Ideas</div><h3>12 Content Ideas for Therapists That Don't Require Sharing Client Stories</h3><p>Practical prompts that showcase expertise while maintaining confidentiality standards.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Boundary-Safe Social</div><h3>How to Handle DMs as a Clinician: Scripts for Professional Boundaries</h3><p>Ready-to-use response templates for common social media interactions.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Practice Growth</div><h3>Why "Fill Your Caseload" Marketing Fails Therapists</h3><p>Why most marketing advice doesn't apply to clinical practice — and what works instead.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Ethical Marketing</div><h3>Evidence-Informed vs. Evidence-Based: Why Your Content Language Matters</h3><p>The nuances of clinical language in public-facing content and maintaining credibility.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Referral Messaging</div><h3>Writing a Therapist Bio That Attracts Aligned Clients</h3><p>How to describe your approach so the right people self-select.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Content Ideas</div><h3>The "One Blog, One Month" Content System for Busy Clinicians</h3><p>How to turn a single monthly blog post into a full content calendar.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Boundary-Safe Social</div><h3>Disclaimers, Disclosures, and Duty: What Clinicians Need on Their Profiles</h3><p>What to include on your social profiles to maintain professional and legal standards.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Practice Growth</div><h3>Fit-Focused Marketing: How to Attract Clients You Actually Want to Work With</h3><p>Moving beyond volume to an approach that reduces misfit inquiries.</p><span class="art-link">Read article →</span></div>
+    <div class="art-card"><div class="art-cat">Ethical Marketing</div><h3>What Therapists Get Wrong About SEO (And the Simple Fix)</h3><p>How search optimization works for local clinical practices — without deceptive tactics.</p><span class="art-link">Read article →</span></div>
+  </div></div></section>
 </div>
 
-<!-- ═══════════════════════════════════════
-     CONTACT
-═══════════════════════════════════════ -->
+<!-- CONTACT -->
 <div id="page-contact" class="page">
-  <div class="contact-hero">
-    <span class="label label-sage">Get Started</span>
-    <h1>Let's find out what's possible for your practice.</h1>
-    <p>Start with the Website Visibility Audit — or book a free strategy call if you want to talk first.</p>
-  </div>
-  <section class="contact-options">
-    <div class="co-inner">
-      <div class="co-card primary">
-        <div class="co-icon">🔍</div>
-        <div class="co-price">$99</div>
-        <h3>Website Visibility Audit</h3>
-        <p>A comprehensive review of your website, local presence, and trust signals — delivered as a Loom video walkthrough with a written summary. Actionable, specific, and worth far more than the price.</p>
-        <ul class="co-list">
-          <li>Homepage clarity and messaging review</li>
-          <li>Trust signal assessment</li>
-          <li>CTA structure analysis</li>
-          <li>Local visibility and Google Business check</li>
-          <li>SEO structure overview</li>
-          <li>Loom video walkthrough</li>
-          <li>Delivered in 5 business days</li>
-        </ul>
-        <a href="mailto:hello@rootedreach.com?subject=Website Visibility Audit" class="btn btn-primary">Book a Free 15-Min Strategy Call</a>
-        <p class="audit-note" style="margin-top:1rem;">No upsell pressure. Real value guaranteed.</p>
-      </div>
-      <div class="co-card">
-        <div class="co-icon">📅</div>
-        <h3>Free Strategy Call</h3>
-        <p>Book a 30-minute strategy call. We'll talk about your practice, where you are, and what a growth path might look like. No commitment required — just a real conversation.</p>
-        <ul class="co-list">
-          <li>30 minutes, one-on-one</li>
-          <li>Discuss your situation and goals</li>
-          <li>Honest feedback on what would move the needle</li>
-          <li>No sales pressure, no commitment</li>
-        </ul>
-        <a href="mailto:hello@rootedreach.com?subject=Strategy Call Request" class="btn btn-outline-dark" style="margin-top:auto;">Schedule a Strategy Call</a>
-      </div>
-    </div>
+  <section class="contact-hero">
+    <span class="label label-sage" style="justify-content:center">Get Started</span>
+    <h1>Let's find out if this is the right fit.</h1>
+    <p>A discovery call is a 20-minute conversation about your practice and goals. No pitch, no pressure — just a clear next step.</p>
   </section>
-  <section class="contact-form-section">
-    <div class="cf-inner">
-      <h2>Send us a message</h2>
-      <p class="cf-sub">Prefer to reach out directly? We'll get back to you within one business day.</p>
-      <div class="form-row">
-        <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane" /></div>
-        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@mypractice.com" /></div>
-        <div class="form-group"><label>Practice Name</label><input type="text" placeholder="Smith Therapy PLLC" /></div>
-        <div class="form-group full"><label>What are you most interested in?</label><select><option value="" disabled selected>Select an option</option><option>Website Visibility Audit ($99)</option><option>Authority Engine — Content Marketing</option><option>Website Optimization</option><option>Local Visibility Setup</option><option>Full Growth Partnership</option><option>Free Strategy Call</option><option>Not sure yet</option></select></div>
-        <div class="form-group full"><label>Tell us about your practice</label><textarea placeholder="A little about your practice, specialty, location, and what's been holding you back from growing online..."></textarea></div>
-      </div>
-      <button class="form-submit" onclick="handleSubmit(this)">Send Message →</button>
+  <section class="expect-section"><div class="exp-inner">
+    <div class="exp-card"><div class="exp-icon">📅</div><h4>20 minutes</h4><p>Brief, focused, respectful of your schedule.</p></div>
+    <div class="exp-card"><div class="exp-icon">📧</div><h4>Response within 48 hours</h4><p>We'll confirm or respond within two business days.</p></div>
+    <div class="exp-card"><div class="exp-icon">🧭</div><h4>Clear next steps</h4><p>You'll leave with a concrete understanding — or a thoughtful referral if we're not the right fit.</p></div>
+  </div></section>
+  <section class="contact-section"><div class="cf-inner">
+    <h2>Tell us about your practice.</h2><p class="cf-sub">This helps us prepare for our conversation and understand your situation before we speak.</p>
+    <div class="form-row">
+      <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane"/></div>
+      <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"/></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@mypractice.com"/></div>
+      <div class="form-group"><label>Phone (optional)</label><input type="tel" placeholder="(555) 555-0100"/></div>
+      <div class="form-group"><label>Practice Name</label><input type="text" placeholder="Smith Therapy PLLC"/></div>
+      <div class="form-group"><label>State / Licensing Jurisdiction</label><input type="text" placeholder="e.g. California"/></div>
+      <div class="form-group full"><label>Your Licensure / Credentials</label><select><option value="" disabled selected>Select your primary credential</option><option>LCSW</option><option>LPC / LMHC</option><option>Psychologist (PhD / PsyD)</option><option>LMFT</option><option>Psychiatrist (MD / DO)</option><option>Other Licensed Health Professional</option><option>Pre-licensed / Associate</option></select></div>
+      <div class="form-group full"><label>Primary Specialty or Focus Areas</label><input type="text" placeholder="e.g. Anxiety, couples therapy, EMDR, eating disorders"/></div>
+      <div class="form-group full"><label>What are you most interested in?</label><select><option value="" disabled selected>Select one</option><option>Full content system (blog + video + social)</option><option>Strategy & clinical positioning only</option><option>Social media management</option><option>Website copy refresh</option><option>Not sure yet — exploring options</option></select></div>
+      <div class="form-group full"><label>What does sustainable growth look like for your practice?</label><textarea placeholder="Tell us about your goals, what's been challenging about marketing, or anything you'd like us to know..."></textarea></div>
     </div>
-  </section>
+    <button class="form-submit" onclick="handleSubmit(this)">Submit & Schedule a Discovery Call →</button>
+    <p style="text-align:center;font-size:0.76rem;color:var(--mist);margin-top:0.85rem;font-style:italic">No spam. No mailing lists. Just a response to your inquiry.</p>
+  </div></section>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
-          <svg width="22" height="26" aria-hidden="true"><use href="#rr-logo-icon"/></svg>
-          <p class="footer-brand-name" style="margin:0;">Rooted Reach</p>
-        </div>
-        <p>Boutique marketing for mental health professionals. Ethical, strategic, and built for sustainable growth.</p>
-        <a onclick="navigate('contact')" class="footer-cta-pill">Book a Free Strategy Call</a>
-      </div>
-      <div class="footer-col">
-        <h5>Services</h5>
-        <ul>
-          <li><a onclick="navigate('services')">Authority Engine</a></li>
-          <li><a onclick="navigate('services')">Website Optimization</a></li>
-          <li><a onclick="navigate('services')">Local Visibility Setup</a></li>
-          <li><a onclick="navigate('services')">Full Growth Partnership</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a onclick="navigate('about')">About</a></li>
-          <li><a onclick="navigate('how')">How It Works</a></li>
-          <li><a onclick="navigate('therapists')">For Therapists</a></li>
-          <li><a onclick="navigate('cases')">Case Studies</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a onclick="navigate('contact')">Book a Free Strategy Call</a></li>
-          <li><a onclick="navigate('contact')">Strategy Call</a></li>
-          <li><a href="mailto:hello@rootedreach.com">hello@rootedreach.com</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Rooted Reach. All rights reserved.</p>
-      <p>Built with care for the mental health community.</p>
-    </div>
+<footer><div class="footer-inner">
+  <div class="footer-top">
+    <div class="footer-brand"><p class="footer-brand-name">Athenna Agency</p><p>Ethical content marketing for licensed therapists, counselors, psychologists, and health professionals.</p></div>
+    <div class="footer-col"><h5>Services</h5><ul><li><a onclick="go('services')">Strategy & Positioning</a></li><li><a onclick="go('services')">Content System</a></li><li><a onclick="go('services')">Copywriting & Design</a></li><li><a onclick="go('services')">Boundary Scripts</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a onclick="go('about')">About</a></li><li><a onclick="go('process')">Process & Ethics</a></li><li><a onclick="go('resources')">Insights</a></li><li><a onclick="go('contact')">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Connect</h5><ul><li><a href="mailto:hello@athennaagency.com">hello@athennaagency.com</a></li><li><a onclick="go('contact')">Discovery Call</a></li></ul></div>
   </div>
-</footer>
+  <div class="footer-bottom"><p>© 2026 Athenna Agency. All rights reserved.</p><p>Built with care for licensed health professionals.</p></div>
+</div></footer>
 
 <script>
-  function navigate(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    const target = document.getElementById('page-' + page);
-    if (target) target.classList.add('active');
-    document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
-      a.classList.toggle('active-link', a.dataset.page === page);
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    history.pushState({ page }, '', '#' + page);
-  }
-
-  window.addEventListener('popstate', e => {
-    navigate((e.state && e.state.page) || 'home');
-  });
-
-  const initHash = window.location.hash.replace('#', '');
-  if (initHash && document.getElementById('page-' + initHash)) navigate(initHash);
-
-  function handleSubmit(btn) {
-    btn.textContent = '✓ Message received — we\'ll be in touch within one business day.';
-    btn.style.background = 'var(--sage)';
-    btn.disabled = true;
-  }
-
-  // Fade-in on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-
-  function initAnim() {
-    document.querySelectorAll(
-      '.pillar,.svc-card,.why-card,.step-block,.case-card,.value-card,.ethics-card,.fs-card,.prob-card,.co-card'
-    ).forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(16px)';
-      el.style.transition = `opacity 0.5s ease ${Math.min(i,8)*0.06}s, transform 0.5s ease ${Math.min(i,8)*0.06}s`;
-      io.observe(el);
-    });
-  }
-  initAnim();
-
-  document.querySelectorAll('[onclick]').forEach(el => {
-    el.addEventListener('click', () => setTimeout(initAnim, 80));
-  });
+function go(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));const t=document.getElementById('page-'+p);if(t)t.classList.add('active');document.querySelectorAll('.nav-links a[data-page]').forEach(a=>{a.classList.toggle('act',a.dataset.page===p)});window.scrollTo({top:0,behavior:'smooth'});history.pushState({p},'','#'+p);setTimeout(initAnim,80)}
+window.addEventListener('popstate',e=>{go((e.state&&e.state.p)||'home')});
+const h=window.location.hash.replace('#','');if(h&&document.getElementById('page-'+h))go(h);
+function handleSubmit(b){b.textContent='✓ Received — we\'ll be in touch within 48 hours.';b.style.background='var(--sage)';b.disabled=true}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';io.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+function initAnim(){document.querySelectorAll('.safe-card,.sp-card,.diff-card,.faq-item,.val-card,.art-card,.wf-step,.clin-card,.disc-card,.exp-card').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(14px)';el.style.transition=`opacity 0.45s ease ${Math.min(i,8)*0.05}s,transform 0.45s ease ${Math.min(i,8)*0.05}s`;io.observe(el)})}
+initAnim();
 </script>
 </body>
 </html>
